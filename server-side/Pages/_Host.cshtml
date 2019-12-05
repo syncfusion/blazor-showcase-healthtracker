@@ -1,0 +1,37 @@
+﻿@page "/"
+@namespace HealthTracker.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthTracker</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/cards.css" rel="stylesheet" />
+    <link href="~/css/calory.css" rel="stylesheet" />
+    <link href="~/css/steps.css" rel="stylesheet" />
+    <link href="~/css/water.css" rel="stylesheet" />
+    <link href="~/css/sleep.css" rel="stylesheet" />
+    <link href="~/css/icomoon.eot" rel="stylesheet"/>
+    <link href="~/css/icomoon.svg" rel="stylesheet"/>
+    <link href="~/css/icomoon.ttf" rel="stylesheet"/>
+    <link href="~/css/icomoon.woff" rel="stylesheet"/>
+
+    <link href="~/css/health-tracker.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet" />
+    <link href="https://cdn.syncfusion.com/ej2/17.3.26/material.css" rel="stylesheet" />
+    <script src="https://cdn.syncfusion.com/ej2/17.3.26/dist/ej2.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/17.3.26/dist/ejs.interop.min.js"></script>
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>

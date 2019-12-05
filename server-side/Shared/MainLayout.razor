@@ -1,0 +1,23 @@
+﻿@inherits LayoutComponentBase
+@using HealthTracker.Components
+<div class="container main-container">
+    <div class="row main-title">
+        <div class="col"  style="padding-left: 1.5%; margin-top: 10px;">
+            <img src="css/images/Healthstat.png"/>
+            <span class="health-title">Health <b style="font-weight: 600"> Stat</b></span>
+        </div>
+        <div class="col" style="text-align: end; padding-right: 1.5%; margin-top: 10px; ">           
+             <b>Hi, John Smith</b>               
+             <img src="css/images/Profile_.png" />               
+        </div>          
+    </div>
+
+    <div class="row" style="margin-right: 1%">
+        <Cards></Cards>
+    </div>
+
+    <div class="row" style="margin-left: 20px; margin-right: 45px">
+        @Body
+    </div>
+
+</div>

@@ -1,0 +1,109 @@
+
+
+
+body {
+    box-shadow: 0 1px 4px 1px rgba(0,0,0,0.10);
+    padding-top: 5px;
+    font-family: "Roboto";
+}
+
+app {
+    padding-bottom: 20px;
+    background: #FAFAFA;
+}
+
+html {
+    height: 100%;
+    font-family: "Roboto";
+}
+.main-container {
+    position: relative;
+    display: block;  
+    padding: 0;
+    margin: 0px !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 100%;
+    min-height: 60px;
+    height: 20%;
+}
+
+.main-title {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 7px 0 rgba(0,0,0,0.16);
+    height: 60px;
+    background-color: white;
+}
+
+.second-chart-box {
+    box-shadow: 0 1px 4px 1px rgba(0,0,0,0.10);
+    background: #FFFFFF !important;
+    padding: 0px;
+    height: 530px;   
+}
+
+.main-chart {   
+    background: #FAFAFA;  
+    display: block;
+    width: 97%;
+}
+
+.main-chart-title {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 20px;
+    color: #535353;
+    letter-spacing: 0;
+    display: block;
+}
+
+.main-chart-sub-title {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+   
+}
+
+
+@media only screen and (min-width: 901px) {
+    .main-chart-sub-title2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-left: -1%;
+    }
+}
+
+@media only screen and (min-width: 901px) {
+    .main-chart-sub-title2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-left: -1%;
+    }
+}
+
+/* If the screen size is 600px or less, set the font-size of <div> to 30px */
+@media only screen and (max-width: 600px) {
+    .main-chart-sub-title2 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-left: -1%;
+
+    }
+}
+.row {
+    margin: 0px;
+}
+
+.col {
+    padding: unset;
+}
+
+
+.health-title {
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 18px;
+    color: #1A1A1A;
+}

@@ -1,0 +1,261 @@
+
+.table td{
+    padding: 0rem !important;
+   vertical-align: middle !important;
+    border-top: 0px !important;
+}
+
+.calory-footer {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.calory-footer-data {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.calory-food {
+    margin-top: 30px;
+    height: 93px;
+    width: 100%;    
+}
+
+
+.calory-image {
+    display: inline-block;   
+    margin-top: 10px;
+    height: 50px;
+    width: 50px; 
+    text-align: center;    
+}
+
+
+.calory-breakfast {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);   
+    text-align: center;    
+}
+.calory-breakfast-image {
+    background-image: url(images/Breakfast.png);
+}
+.calory-font-breakfast {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.calory-breakfast-click {
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    border-color: #7D7D7D;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+
+.calory-breakfast-image-click {
+    background-image: url(images/breakfast_selected.png);
+}
+
+.calory-font-breakfast-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white !important;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.calory-lunch {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);
+    text-align: center;
+}
+.calory-lunch-image {
+    background-image: url(images/Lunch.png);
+}
+.calory-font-lunch {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+.calory-lunch-click {
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #7D7D7D;
+    text-align: center;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+
+.calory-lunch-image-click {
+    background-image: url('images/Lunch selected.png');
+}
+
+.calory-font-lunch-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.calory-dinner {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);
+    text-align: center;
+}
+.calory-dinner-image {
+    background-image: url(images/Dinner.png);
+}
+.calory-font-dinner {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+.calory-dinner-click {
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    border-color: #7D7D7D;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+
+.calory-dinner-image-click {
+    background-image: url('images/Dinner_Selected.png');
+}
+
+.calory-font-dinner-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.calory-snack {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);
+    text-align: center;   
+}
+.calory-snack-image{
+    background-image: url(images/Snack.png);
+}
+.calory-font-snack {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+.calory-snack-click {
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    border-color: #7D7D7D;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+.calory-snack-image-click {
+    background-image: url('images/Snack_selected.png');
+}
+.calory-font-snack-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.calory-breakfast:hover .calory-breakfast-image {
+    background-image: url('images/breakfast hover.png');
+}
+.calory-breakfast:hover .calory-font-breakfast {
+    color: #CB2F1B;
+}
+.calory-breakfast:hover  {
+    border-color: #CB2F1B;
+}
+
+.calory-lunch:hover .calory-lunch-image {
+    background-image: url('images/Lunch hover.png');
+}
+.calory-lunch:hover .calory-font-lunch {
+    color: #CB2F1B;
+}
+.calory-lunch:hover {
+    border-color: #CB2F1B;
+}
+
+.calory-dinner:hover .calory-dinner-image {
+    background-image: url('images/Dinner_Hover.png');
+}
+.calory-dinner:hover .calory-font-dinner {
+    color: #CB2F1B;
+}
+.calory-dinner:hover {
+    border-color: #CB2F1B;
+}
+
+.calory-snack:hover .calory-snack-image {
+    background-image: url('images/Snack_hover.png');
+}
+.calory-snack:hover .calory-font-snack {
+    color: #CB2F1B;
+}
+.calory-snack:hover  {
+    border-color: #CB2F1B;
+}
+
+
+/** Calory second pie chart styles*/
+.calory-pie-total {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 40px;
+    color: #F24C37;
+    letter-spacing: 0.86px;
+    text-align: center;
+    line-height: 25.92px;
+}
+
+.calory-pie-text {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    color: #F24C37;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 5px; 
+}
+
+.calory-pie-left {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    color: #4A4A4A;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+
+.images-height {
+    height: 40px;
+}
+
+.center-annotation {
+    margin-top: -10%;
+    margin-left: -13%
+}

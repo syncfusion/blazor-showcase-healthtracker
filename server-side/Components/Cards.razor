@@ -1,0 +1,171 @@
+﻿@inject NavigationManager NavigationManager
+<div class="container card-container">
+    <div class="row">
+        <NavLink href="calories" Match="NavLinkMatch.All" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
+            <div class="col" @onclick="caloryClick">
+                <div tabindex="0" class="@caloryMainClass">
+                    <h3 style="font-size: 32px; font-weight: 400">13,100</h3>
+                    <div>
+                        <span style="font-size: 18px">Calories Eaten</span>
+                        <span class="@caloryImage">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </NavLink>
+        <NavLink href="steps" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
+            <div class="col" @onclick="stepClick">
+                <div tabindex="0" class="@stepMainClass">
+                    <h3 style="font-size: 32px; font-weight: 400">52,100</h3>
+                    <div>
+                        <span style="font-size: 18px">Steps Taken</span>
+                        <span class="@stepImage">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </NavLink>
+
+        <NavLink href="water" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
+            <div class="col" @onclick="waterClick">
+                <div tabindex="0" class="@waterMainClass">
+                    <h3 style="font-size: 32px; font-weight: 400">38.7 ltr</h3>
+                    <div>
+                        <span style="font-size: 18px">Water Consumed</span>
+                        <span class="@waterImage">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </NavLink>
+        <NavLink href="sleep" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
+            <div class="col" @onclick="sleepClick">
+                <div tabindex="0" class="@sleepMainClass">
+                    <h3 style="font-size: 32px; font-weight: 400">50 hr</h3>
+                    <div>
+                        <span style="font-size: 18px">Sleep Duration</span>
+                        <span class="@sleepImage">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </NavLink>
+    </div>
+</div>
+
+@code {    
+        string caloryMainClass = "e-card calory-fonts-click";
+        string caloryImage = "card-calory-image-click";
+
+        string stepMainClass = "e-card step-fonts";
+        string stepImage = "card-step-image";
+
+        string waterMainClass = "e-card water-fonts";
+        string waterImage = "card-water-image";
+
+        string sleepMainClass = "e-card sleep-fonts";
+        string sleepImage = "card-sleep-image";
+
+    protected override async Task OnInitializedAsync()
+    {
+        string URL = NavigationManager.Uri;
+        if(URL.Contains("Water"))
+        {
+            waterClick();
+        } else if (URL.Contains("Steps")) {
+            stepClick();
+        } else if(URL.Contains("Sleep"))
+        {
+            sleepClick();
+        }
+    }
+    public void stepClick()
+    {
+        caloryClassChanges(false);
+        stepClassChanges(true);
+        waterClassChanges(false);
+        sleepClassChanges(false);
+    }
+
+    public void caloryClick()
+    {
+        caloryClassChanges(true);
+        stepClassChanges(false);
+        waterClassChanges(false);
+        sleepClassChanges(false);
+    }
+
+    public void waterClick()
+    {
+        caloryClassChanges(false);
+        stepClassChanges(false);
+        waterClassChanges(true);
+        sleepClassChanges(false);
+    }
+
+    public void sleepClick()
+    {
+        caloryClassChanges(false);
+        stepClassChanges(false);
+        waterClassChanges(false);
+        sleepClassChanges(true);
+
+    }
+
+
+    void stepClassChanges(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            stepMainClass = "e-card step-fonts-click";
+            stepImage = "card-step-image-click";
+        }
+        else
+        {
+            stepMainClass = "e-card step-fonts";
+            stepImage = "card-step-image";
+        }
+    }
+
+    void waterClassChanges(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            waterMainClass = "e-card water-fonts-click";
+            waterImage = "card-water-image-click";
+        }
+        else
+        {
+            waterMainClass = "e-card water-fonts";
+            waterImage = "card-water-image";
+        }
+    }
+
+    void caloryClassChanges(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            caloryMainClass = "e-card calory-fonts-click";
+            caloryImage = "card-calory-image-click";
+        }
+        else
+        {
+            caloryMainClass = "e-card calory-fonts";
+            caloryImage = "card-calory-image";
+        }
+    }
+
+    void sleepClassChanges(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            sleepMainClass = "e-card sleep-fonts-click";
+            sleepImage = "card-sleep-image-click";
+        }
+        else
+        {
+            sleepMainClass = "e-card sleep-fonts";
+            sleepImage = "card-sleep-image";
+        }
+    }
+}

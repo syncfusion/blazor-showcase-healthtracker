@@ -1,0 +1,340 @@
+﻿@page "/water";
+@using Syncfusion.EJ2.Blazor.Charts;
+@using System.Collections.ObjectModel;
+@using HealthTracker.Data
+@inject SundayService HealthDataSunday
+@inject MondayService HealthDataMonday
+@inject WednesdayService HealthDataWednesday
+@inject ThursdayService HealthDataThursday
+@inject FridayService HealthDataFriday
+@inject SaturdayService HealthDataSaturday
+@inject TuesdayService HealthDataTuesday
+<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
+    <div class="row">
+        <div class="col-6">
+            <div class="main-chart-title">  Water Consumption </div>
+        </div>
+        <div class="col-3">
+            <table class="table table-borderless" align="right">
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title" style="color: black">Target</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title2" style="color: rgb(59, 97, 233);">7 Litres</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-3" >
+            <table class="table table-borderless" align="right">
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title" style="color: black">Daily Average</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title2" style="color: rgb(59, 97, 233);">4.2 Litres</div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        
+    </div>
+
+    <div class="main-chart">
+        <EjsChart Background="#FAFAFA">
+            <ChartEvents OnPointClick="FindPolarData"></ChartEvents>
+            <ChartPrimaryXAxis ValueType="Syncfusion.EJ2.Blazor.Charts.ValueType.Category" EdgeLabelPlacement="EdgeLabelPlacement.Shift" LabelPlacement="LabelPlacement.OnTicks">
+                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+            </ChartPrimaryXAxis>
+            <ChartPrimaryYAxis LabelFormat="{value} ltr" Minimum="2" Maximum="10" Interval="1">
+                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                <ChartStripLines>
+                    <ChartStripLine Start="7" SizeType="SizeType.Pixel" Size="1" DashArray="5,5" Text="Target" Color="#3B61E9" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
+                        <ChartPrimaryYAxisStripLineFont Color="#3B61E9" Size="14px"></ChartPrimaryYAxisStripLineFont>
+                    </ChartStripLine>
+                </ChartStripLines>
+            </ChartPrimaryYAxis>
+            <ChartArea>
+                <ChartAreaBorder Width="0"></ChartAreaBorder>
+            </ChartArea>
+            <ChartTooltipSettings Enable="true" EnableMarker="false" Format="${point.y}"></ChartTooltipSettings>
+            <ChartAnnotations>
+                <ChartAnnotation X="Thursday" Y="8.5" CoordinateUnits="Units.Point">
+                    <ContentTemplate>
+                        <div><img src="images/Achieved_water.png" style="width: 30px; height: 30px; transform: translateX(-55%);" /></div>
+                    </ContentTemplate>
+                </ChartAnnotation>
+            </ChartAnnotations>
+            <ChartSeriesCollection>
+                <ChartSeries DataSource="WaterData" Type="ChartSeriesType.Spline" XName="Day" YName="Value" Fill="#3B61E9" Width="3">
+                    <ChartMarker Visible="true" Width="8" Height="8">
+                        <ChartMarkerBorder Color="#484848" Width="2"></ChartMarkerBorder>
+                    </ChartMarker>
+                </ChartSeries>
+            </ChartSeriesCollection>
+        </EjsChart>
+    </div>
+</div>
+<div class="col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 row second-chart-box">
+    <div>
+        <div class="pieHeader">@WaterDay</div>
+    </div>
+    <div style="height: 320px; width: 100%;">
+        <EjsChart Height="320px" @ref="PolarChart" SelectionMode="SelectionMode.Point">
+            <ChartEvents OnPointClick="PolarPointClick"></ChartEvents>
+            <ChartPrimaryXAxis ValueType="Syncfusion.EJ2.Blazor.Charts.ValueType.Category" LabelPlacement="LabelPlacement.OnTicks"></ChartPrimaryXAxis>
+            <ChartPrimaryYAxis LabelFormat="{value}L"></ChartPrimaryYAxis>
+            <ChartTooltipSettings Enable="true" EnableMarker="false" Format="Click to Add Water"></ChartTooltipSettings>
+            <ChartSeriesCollection>
+                <ChartSeries DataSource="@PolarData" XName="X" YName="Y" Fill="url(#fabric-gradient-chart)" Type="ChartSeriesType.Polar" DrawType="ChartDrawType.Column">
+                    <ChartSeriesBorder Width="1" Color="White"></ChartSeriesBorder>
+                    <ChartSeriesAnimation Enable="true"></ChartSeriesAnimation>
+                </ChartSeries>
+            </ChartSeriesCollection>
+            <ChartSelectedDataIndexes>
+                <ChartSelectedDataIndex Series="0" Point="5"></ChartSelectedDataIndex>
+            </ChartSelectedDataIndexes>
+        </EjsChart>
+    </div>
+    <div style="width: 100%">
+        <div style="text-align: center;font-weight: 500;font-size: 16px;color: #1A1A1A;"><b>Add Water intake value</b></div>
+        <div class="row" style="margin-left: 10px; margin-right: 10px">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 cup-padding" @onclick="Click50Div">
+                <div class="@Water50Main">
+                    <div class="@Water50Image"></div>
+                    <div class="@Water50Text">50 ml</div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-3 cup-padding" @onclick="Click100Div">
+                <div class="@Water100Main">
+                    <div class="@Water100Image"></div>
+                    <div class="@Water100Text">100 ml</div>
+                </div>
+            </div>
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 cup-padding" @onclick="Click200Div">
+                <div class="@Water200Main">
+                    <div class="@Water200Image"></div>
+                    <div class="@Water200Text">200 ml</div>
+                </div>
+            </div>
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 cup-padding" @onclick="Click300Div">
+                <div class="@Water300Main">
+                    <div class="@Water300Image"></div>
+                    <div class="@Water300Text">300 ml</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<style>
+    #fabric-gradient-chart stop {
+        stop-color: #2140DC;
+    }
+
+    .chart-gradient stop[offset="0"] {
+        stop-opacity: 0.9;
+    }
+
+    .chart-gradient stop[offset="1"] {
+        stop-opacity: 0.3;
+    }
+
+    .col-3 {
+       min-width: 80px;
+    }
+</style>
+<svg style="height: 0">
+    <defs>
+        <linearGradient id="fabric-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+    </defs>
+</svg>
+@code {
+    EjsChart PolarChart;
+    List<Data> WaterData;
+    int currentDay = 0;
+    public ObservableCollection<ChartData> PolarData { get; set; }
+  
+
+    string WaterDay = "Sunday Activity";
+    double PolarPointIndex = 5;
+    protected override async Task OnInitializedAsync()
+    {
+        this.WaterData = new List<Data>
+{
+            new Data { Day = "Sunday" , Value = 5},
+            new Data { Day = "Monday" , Value = 6},
+            new Data { Day = "Tuesday" , Value = 4.5},
+            new Data { Day = "Wednesday" , Value = 5.5},
+            new Data { Day = "Thursday" , Value = 7.5},
+            new Data { Day = "Friday" , Value = 4.2},
+            new Data { Day = "Saturday" , Value = 6 },
+
+        };
+        this.PolarData = HealthDataSunday.Water();
+    }
+
+    void PolarPointClick(IPointEventArgs args)
+    {
+        PolarPointIndex = args.PointIndex;
+    }
+
+    void FindPolarData(IPointEventArgs args)
+    {
+        switch (args.PointIndex)
+        {
+            case 0:
+                this.PolarData = HealthDataSunday.Water();
+                WaterDay = "Sunday Activity";
+                break;
+            case 1:
+                this.PolarData = HealthDataMonday.Water();
+                WaterDay = "Monday Activity";
+                break;
+            case 2:
+                this.PolarData = HealthDataTuesday.Water();
+                WaterDay = "Tuesday Activity";
+                break;
+            case 3:
+                this.PolarData = HealthDataWednesday.Water();
+                WaterDay = "Wednesday Activity";
+                break;
+            case 4:
+                this.PolarData = HealthDataThursday.Water();
+                WaterDay = "Thursday Activity";
+                break;
+            case 5:
+                this.PolarData = HealthDataFriday.Water();
+                WaterDay = "Friday Activity";
+                break;
+            case 6:
+                this.PolarData = HealthDataSaturday.Water();
+                WaterDay = "Saturday Activity";
+                break;
+        }
+        PolarPointIndex = 5;
+        StateHasChanged();
+    }
+
+    void Click50Div()
+    {
+        Click50(true);
+        Click100(false);
+        Click200(false);
+        Click300(false);
+        this.PolarData[(int)PolarPointIndex].Y += 0.05;
+    }
+
+
+    void Click100Div()
+    {
+        Click50(false);
+        Click100(true);
+        Click200(false);
+        Click300(false);
+           this.PolarData[(int)PolarPointIndex].Y += 0.1;
+    }
+    void Click200Div()
+    {
+        Click50(false);
+        Click100(false);
+        Click200(true);
+        Click300(false);
+           this.PolarData[(int)PolarPointIndex].Y += 0.2;
+    }
+    void Click300Div()
+    {
+        Click50(false);
+        Click100(false);
+        Click200(false);
+        Click300(true);
+           this.PolarData[(int)PolarPointIndex].Y += 0.3;
+    }
+
+    string Water50Main = "water-cup water-cup-50-click";
+    string Water50Image = "water-image water-cup-50-image-click";
+    string Water50Text = "water-cup-50-text-click";
+    string Water100Main = "water-cup water-cup-100";
+    string Water100Image = "water-image water-cup-100-image";
+    string Water100Text = "water-cup-100-text";
+    string Water200Main = "water-cup water-cup-200";
+    string Water200Image = "water-image water-cup-200-image";
+    string Water200Text = "water-cup-200-text";
+    string Water300Main = "water-cup water-cup-300";
+    string Water300Image = "water-image water-cup-300-image";
+    string Water300Text = "water-cup-300-text";
+
+    void Click50(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            Water50Main = "water-cup water-cup-50-click";
+            Water50Image = "water-image water-cup-50-image-click";
+            Water50Text = "water-cup-50-text-click";
+        }
+        else
+        {
+            Water50Main = "water-cup water-cup-50";
+            Water50Image = "water-image water-cup-50-image";
+            Water50Text = "water-cup-50-text";
+        }
+    }
+    void Click100(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            Water100Main = "water-cup water-cup-100-click";
+            Water100Image = "water-image water-cup-100-image-click";
+            Water100Text = "water-cup-100-text-click";
+        }
+        else
+        {
+            Water100Main = "water-cup water-cup-100";
+            Water100Image = "water-image water-cup-100-image";
+            Water100Text = "water-cup-100-text";
+        }
+    }
+    void Click200(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            Water200Main = "water-cup water-cup-200-click";
+            Water200Image = "water-image water-cup-200-image-click";
+            Water200Text = "water-cup-200-text-click";
+        }
+        else
+        {
+            Water200Main = "water-cup water-cup-200";
+            Water200Image = "water-image water-cup-200-image";
+            Water200Text = "water-cup-200-text";
+        }
+    }
+    void Click300(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            Water300Main = "water-cup water-cup-300-click";
+            Water300Image = "water-image water-cup-300-image-click";
+            Water300Text = "water-cup-300-text-click";
+        }
+        else
+        {
+            Water300Main = "water-cup water-cup-300";
+            Water300Image = "water-image water-cup-300-image";
+            Water300Text = "water-cup-300-text";
+        }
+    }
+}
