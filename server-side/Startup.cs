@@ -29,7 +29,7 @@ namespace HealthTracker
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            SyncfusionBlazor.AddSyncfusionBlazor(services);
+            services.AddSyncfusionBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<SundayService>();
             services.AddSingleton<MondayService>();
