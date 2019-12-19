@@ -41,20 +41,20 @@
             <ChartPrimaryYAxis>
                 <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
                 <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                <ChartStripLines>
-                    <ChartStripLine Start="9000" SizeType="SizeType.Pixel" Size="1" DashArray="5,5" Color='#BB830D' Text="Goal 9000 Steps" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
-                        <ChartPrimaryYAxisStripLineFont Color="#BB830D" Size="14px" FontFamily="Roboto" FontWeight="500"></ChartPrimaryYAxisStripLineFont>
-                    </ChartStripLine>
-                </ChartStripLines>
+                <ChartStriplines>
+                    <ChartStripline Start="9000" SizeType="SizeType.Pixel" Size="1" DashArray="5,5" Color='#BB830D' Text="Goal 9000 Steps" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
+                        <ChartStriplineTextStyle Color="#BB830D" Size="14px" FontFamily="Roboto" FontWeight="500"></ChartStriplineTextStyle>
+                    </ChartStripline>
+                </ChartStriplines>
             </ChartPrimaryYAxis>
             <ChartArea>
                 <ChartAreaBorder Width="0"></ChartAreaBorder>
             </ChartArea>
             <ChartTooltipSettings Enable="true" Format="Click to View Details"></ChartTooltipSettings>
             <ChartAnnotations>
-                <ChartAnnotation X="Tuesday" Y="10000" CoordinateUnits="Units.Point" HorizontalAlignment="Alignment.Near" VerticalAlignment="Position.Top">
+                <ChartAnnotation X="Tuesday" Y="9800" CoordinateUnits="Units.Point">
                     <ContentTemplate>
-                        <div id="thumbs_up"><img src="images/Shape.png" style="width: 30px; height: 30px; transform: translate(-50%, -30%);" /></div>
+                        <div id="thumbs_up"><img src="images/Shape.png" style="width: 30px; height: 30px;" /></div>
                     </ContentTemplate>
                 </ChartAnnotation>
             </ChartAnnotations>           
@@ -77,13 +77,13 @@
             </AccumulationChartSeriesCollection>
             <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
             <AccumulationChartAnnotations>
-                <AccumulationChartAnnotation Region="Regions.Chart" X="37%" Y="40%">
+                <AccumulationChartAnnotation Region="Regions.Chart" X="50%" Y="50%">
                     <ContentTemplate>
                         <p class="pie-center-text">@centerContent</p>
                         <p class="pie-center-sub-text">Calories Burnt</p>
                     </ContentTemplate>
                 </AccumulationChartAnnotation>
-                <AccumulationChartAnnotation Region="Regions.Chart" X="0%" Y="0%">
+                <AccumulationChartAnnotation Region="Regions.Chart" X="50%" Y="50%">
                     <ContentTemplate>
                         <EjsAccumulationChart Background="transparent" @ref="ExerPie" Height="330px" Width="330px">
                             <AccumulationChartBorder Color="transparent"></AccumulationChartBorder>
@@ -95,7 +95,7 @@
 
                     </ContentTemplate>
                 </AccumulationChartAnnotation>
-                <AccumulationChartAnnotation Region="Regions.Chart" X="0%" Y="0%">
+                <AccumulationChartAnnotation Region="Regions.Chart" X="50%" Y="50%">
                     <ContentTemplate>
                         <EjsAccumulationChart Background="transparent" @ref="HourPie" Height="330px" Width="330px">
                             <AccumulationChartSeriesCollection>
@@ -105,17 +105,17 @@
                         </EjsAccumulationChart>
                     </ContentTemplate>
                 </AccumulationChartAnnotation>
-                <AccumulationChartAnnotation Region="Regions.Series" X="51%" Y="95%">
+                <AccumulationChartAnnotation Region="Regions.Series" X="53%" Y="95%">
                     <ContentTemplate>
                         <div class="icon-steps" style="text-align: end" />
                     </ContentTemplate>
                 </AccumulationChartAnnotation>
-                <AccumulationChartAnnotation Region="Regions.Series" X="51%" Y="85%">
+                <AccumulationChartAnnotation Region="Regions.Series" X="53%" Y="85%">
                     <ContentTemplate>
                         <div class="icon-workout" />
                     </ContentTemplate>
                 </AccumulationChartAnnotation>
-                <AccumulationChartAnnotation Region="Regions.Series" X="51%" Y="75%">
+                <AccumulationChartAnnotation Region="Regions.Series" X="53%" Y="75%">
                     <ContentTemplate>
                         <div class="icon-active" />
                     </ContentTemplate>

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HealthTracker.Data;
+using Syncfusion.EJ2.Blazor;
 
 namespace HealthTracker
 {
@@ -28,6 +29,7 @@ namespace HealthTracker
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            SyncfusionBlazor.AddSyncfusionBlazor(services);
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<SundayService>();
             services.AddSingleton<MondayService>();

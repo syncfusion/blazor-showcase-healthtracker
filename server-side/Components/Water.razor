@@ -56,20 +56,20 @@
             <ChartPrimaryYAxis LabelFormat="{value} ltr" Minimum="2" Maximum="10" Interval="1">
                 <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                 <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                <ChartStripLines>
-                    <ChartStripLine Start="7" SizeType="SizeType.Pixel" Size="1" DashArray="5,5" Text="Target" Color="#3B61E9" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
-                        <ChartPrimaryYAxisStripLineFont Color="#3B61E9" Size="14px"></ChartPrimaryYAxisStripLineFont>
-                    </ChartStripLine>
-                </ChartStripLines>
+                <ChartStriplines>
+                    <ChartStripline Start="7" SizeType="SizeType.Pixel" Size="1" DashArray="5,5" Text="Target" Color="#3B61E9" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
+                        <ChartStriplineTextStyle Color="#3B61E9" Size="14px"></ChartStriplineTextStyle>
+                    </ChartStripline>
+                </ChartStriplines>
             </ChartPrimaryYAxis>
             <ChartArea>
                 <ChartAreaBorder Width="0"></ChartAreaBorder>
             </ChartArea>
             <ChartTooltipSettings Enable="true" EnableMarker="false" Format="${point.y}"></ChartTooltipSettings>
             <ChartAnnotations>
-                <ChartAnnotation X="Thursday" Y="8.5" CoordinateUnits="Units.Point">
+                <ChartAnnotation X="Thursday" Y="8" CoordinateUnits="Units.Point">
                     <ContentTemplate>
-                        <div><img src="images/Achieved_water.png" style="width: 30px; height: 30px; transform: translateX(-55%);" /></div>
+                        <div><img src="images/Achieved_water.png" style="width: 30px; height: 30px;" /></div>
                     </ContentTemplate>
                 </ChartAnnotation>
             </ChartAnnotations>
