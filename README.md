@@ -1,4 +1,4 @@
-# Essential JS 2 for Blazor - Health Tracker
+# Essential Studio for Blazor - Health Tracker
 
 Track and visualize the calories consumed and daily activities like steps taken, water consumption and sleeping time.
 
