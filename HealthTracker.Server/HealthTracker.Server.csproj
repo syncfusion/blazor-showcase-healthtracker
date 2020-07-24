@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>efc7890f-8400-46cb-a619-46c9a5feeba1</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Blazor" Version="18.1.0.60" />
+    <PackageReference Include="Syncfusion.Licensing" Version="18.1.0.59" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HealthTracker.Shared\HealthTracker.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

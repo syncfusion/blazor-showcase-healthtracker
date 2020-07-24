@@ -1,0 +1,8 @@
+{
+  "name": "Health Tracker",
+  "short_name": "Health Tracker",
+  "description": "Syncfusion Blazor Health Tracker",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff"
+}

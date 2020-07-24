@@ -1,0 +1,261 @@
+
+.table td{
+    padding: 0rem !important;
+   vertical-align: middle !important;
+    border-top: 0px !important;
+}
+
+.Calorie-footer {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.Calorie-footer-data {
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.Calorie-food {
+    margin-top: 30px;
+    height: 93px;
+    width: 100%;    
+}
+
+
+.Calorie-image {
+    display: inline-block;   
+    margin-top: 10px;
+    height: 50px;
+    width: 50px; 
+    text-align: center;    
+}
+
+
+.Calorie-breakfast {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);   
+    text-align: center;    
+}
+.Calorie-breakfast-image {
+    background-image: url(images/Breakfast.png);
+}
+.Calorie-font-breakfast {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.Calorie-breakfast-click {
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    border-color: #7D7D7D;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+
+.Calorie-breakfast-image-click {
+    background-image: url(images/breakfast_selected.png);
+}
+
+.Calorie-font-breakfast-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white !important;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.Calorie-lunch {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);
+    text-align: center;
+}
+.Calorie-lunch-image {
+    background-image: url(images/Lunch.png);
+}
+.Calorie-font-lunch {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+.Calorie-lunch-click {
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #7D7D7D;
+    text-align: center;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+
+.Calorie-lunch-image-click {
+    background-image: url('images/Lunch selected.png');
+}
+
+.Calorie-font-lunch-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.Calorie-dinner {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);
+    text-align: center;
+}
+.Calorie-dinner-image {
+    background-image: url(images/Dinner.png);
+}
+.Calorie-font-dinner {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+.Calorie-dinner-click {
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    border-color: #7D7D7D;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+
+.Calorie-dinner-image-click {
+    background-image: url('images/Dinner_Selected.png');
+}
+
+.Calorie-font-dinner-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.Calorie-snack {
+    border-radius: 5px;
+    border: 1px solid rgba(241,89,51,0.20);
+    text-align: center;   
+}
+.Calorie-snack-image{
+    background-image: url(images/Snack.png);
+}
+.Calorie-font-snack {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: #7D7D7D;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+.Calorie-snack-click {
+    border-radius: 5px;
+    border: 1px solid;
+    text-align: center;
+    border-color: #7D7D7D;
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
+}
+.Calorie-snack-image-click {
+    background-image: url('images/Snack_selected.png');
+}
+.Calorie-font-snack-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white;
+    margin-top: -5%;
+    margin-bottom: 5%;
+}
+
+.Calorie-breakfast:hover .Calorie-breakfast-image {
+    background-image: url('images/breakfast hover.png');
+}
+.Calorie-breakfast:hover .Calorie-font-breakfast {
+    color: #CB2F1B;
+}
+.Calorie-breakfast:hover  {
+    border-color: #CB2F1B;
+}
+
+.Calorie-lunch:hover .Calorie-lunch-image {
+    background-image: url('images/Lunch hover.png');
+}
+.Calorie-lunch:hover .Calorie-font-lunch {
+    color: #CB2F1B;
+}
+.Calorie-lunch:hover {
+    border-color: #CB2F1B;
+}
+
+.Calorie-dinner:hover .Calorie-dinner-image {
+    background-image: url('images/Dinner_Hover.png');
+}
+.Calorie-dinner:hover .Calorie-font-dinner {
+    color: #CB2F1B;
+}
+.Calorie-dinner:hover {
+    border-color: #CB2F1B;
+}
+
+.Calorie-snack:hover .Calorie-snack-image {
+    background-image: url('images/Snack_hover.png');
+}
+.Calorie-snack:hover .Calorie-font-snack {
+    color: #CB2F1B;
+}
+.Calorie-snack:hover  {
+    border-color: #CB2F1B;
+}
+
+
+/** Calorie second pie chart styles*/
+.Calorie-pie-total {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 40px;
+    color: #F24C37;
+    letter-spacing: 0.86px;
+    text-align: center;
+    line-height: 25.92px;
+}
+
+.Calorie-pie-text {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    color: #F24C37;
+    letter-spacing: 0;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 5px; 
+}
+
+.Calorie-pie-left {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    color: #4A4A4A;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+
+.images-height {
+    height: 40px;
+}
+
+.center-annotation {
+    margin-top: -10%;
+    margin-left: -13%
+}

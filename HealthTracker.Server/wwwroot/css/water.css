@@ -1,0 +1,183 @@
+
+.water-cup {
+    margin-top: 10px;   
+    height: 80px;   
+}
+   
+.water-image {  
+   margin:auto;
+    margin-top: 10px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    background-repeat: no-repeat;
+}
+
+.water-cup-50 {
+    border-radius: 5px;
+    border: 1px solid rgba(69, 69, 69, 0.4);
+}
+.water-cup-50-image {
+    background-image: url(images/50ml.png);
+    text-align: center;
+}
+.water-cup-50-text {
+    font-size: 15px;
+    display: block;
+    text-align: center;   
+    color: rgb(91, 91, 91)
+}
+.water-cup-50-click {
+    border-radius: 5px;
+    border: 1px solid rgba(69, 69, 69, 0.4);
+    background-image: linear-gradient(to right, #2140DC, #00BFD5);
+}
+.water-cup-50-image-click {
+    background-image: url(images/50ml_select.png);
+    text-align: center;
+}
+.water-cup-50-text-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white
+}
+
+.water-cup-100 {
+    border-radius: 5px;
+    border: 1px solid;
+    border-color:rgba(69, 69, 69, 0.4);   
+}
+.water-cup-100-image {
+    background-image: url(images/100ml.png);
+    text-align: center;
+}
+.water-cup-100-text {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: rgb(91, 91, 91)
+}
+.water-cup-100-click {
+    border-radius: 5px;
+    border: 1px solid rgba(69, 69, 69, 0.4);
+    background-image: linear-gradient(to right, #2140DC, #00BFD5);
+}
+
+.water-cup-100-image-click {
+    background-image: url(images/100ml_select.png);
+    text-align: center;
+}
+
+.water-cup-100-text-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white
+}
+
+.water-cup-200 {
+    border-radius: 5px;
+    border: 1px solid rgba(69, 69, 69, 0.4);
+}
+.water-cup-200-image {
+    background-image: url(images/200ml.png);
+    text-align: center;
+}
+.water-cup-200-text {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: rgb(91, 91, 91)
+}
+.water-cup-200-click {
+    border-radius: 5px;
+    border: 1px solid rgba(69, 69, 69, 0.4);
+    background-image: linear-gradient(to right, #2140DC, #00BFD5);
+}
+
+.water-cup-200-image-click {
+    background-image: url(images/200ml_select.png);
+    text-align: center;
+}
+
+.water-cup-200-text-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white
+}
+
+.water-cup-300 {
+    border-radius: 5px;
+    border: 1px solid rgba(69, 69, 69, 0.4);
+}
+.water-cup-300-image {
+    background-image: url(images/300ml.png);
+    text-align: center;
+}
+.water-cup-300-text {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: rgb(91, 91, 91)
+}
+.water-cup-300-click {
+    border-radius: 5px;
+    border: 1px solid rgba(69, 69, 69, 0.4);
+    background-image: linear-gradient(to right, #2140DC, #00BFD5);
+}
+
+.water-cup-300-image-click {
+    background-image: url(images/300ml_select.png);
+    text-align: center;
+}
+
+.water-cup-300-text-click {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    color: white
+}
+
+
+
+.water-cup-50:hover .water-cup-50-image {
+    background-image: url(images/50ml_hover.png);
+}
+.water-cup-100:hover .water-cup-100-image {
+    background-image: url(images/100ml_hover.png);
+}
+.water-cup-200:hover .water-cup-200-image {
+    background-image: url(images/200ml_hover.png);
+}
+.water-cup-300:hover .water-cup-300-image {
+    background-image: url(images/300ml_hover.png);
+}
+
+.water-cup-100:hover {
+    border-color: #4771E8;
+}
+.water-cup-100:hover .water-cup-100-text {
+    color: #4771E8;
+}
+
+.water-cup-200:hover {
+    border-color: #4771E8;
+}
+.water-cup-200:hover .water-cup-200-text {
+        color: #4771E8;
+}
+
+.water-cup-300:hover {
+    border-color: #4771E8;
+}
+
+.water-cup-300:hover .water-cup-300-text {
+        color: #4771E8;
+}
+
+.cup-padding {
+    padding-left: 3px;
+    padding-right: 3px;
+}
