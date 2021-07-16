@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.Blazor" Version="18.1.0.60" />
-    <PackageReference Include="Syncfusion.Licensing" Version="18.1.0.59" />
+    <PackageReference Include="Syncfusion.Blazor" Version="19.2.0.44" />
+    <PackageReference Include="Syncfusion.Licensing" Version="19.2.0.44" />
   </ItemGroup>
 
   <ItemGroup>

@@ -83,24 +83,26 @@
     <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-9">
 
         <div class="pieHeader">@CalorieDay</div>
-        <SfAccumulationChart Height="270px">
-            <AccumulationChartSeriesCollection>
-                <AccumulationChartSeries DataSource="@Pie" StartAngle="220" EndAngle="150" XName="X" YName="Y" Radius="90%" InnerRadius="80%" Palettes="Color"></AccumulationChartSeries>
-            </AccumulationChartSeriesCollection>
-            <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
-            <AccumulationChartAnnotations>
-                <AccumulationChartAnnotation Region="Regions.Series" X="52%" Y="52%" CoordinateUnits="Units.Pixel">
-                    <ContentTemplate>
-                        <div class="center-annotation">
-                            <div class="Calorie-pie-total">@CaloriesConsumed</div>
-                            <div class="Calorie-pie-text">Cal consumed</div>
-                            <hr style="margin-top: 15px; margin-bottom: 0px">
-                            <div class="Calorie-pie-left">@CaloriesLeft</div>
-                        </div>
-                    </ContentTemplate>
-                </AccumulationChartAnnotation>
-            </AccumulationChartAnnotations>
-        </SfAccumulationChart>
+        <div>
+            <SfAccumulationChart Height="200px">
+                <AccumulationChartSeriesCollection>
+                    <AccumulationChartSeries DataSource="@Pie" StartAngle="220" EndAngle="140" XName="X" YName="Y" Radius="90%" InnerRadius="80%" Palettes="Color"></AccumulationChartSeries>
+                </AccumulationChartSeriesCollection>
+                <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
+                <AccumulationChartAnnotations>
+                    <AccumulationChartAnnotation Region="Regions.Series" X="52%" Y="52%" CoordinateUnits="Units.Pixel">
+                        <ContentTemplate>
+                            <div class="center-annotation">
+                                <div class="Calorie-pie-total">@CaloriesConsumed</div>
+                                <div class="Calorie-pie-text">Cal consumed</div>
+                                <hr style="margin-top: 15px; margin-bottom: 0px">
+                                <div class="Calorie-pie-left">@CaloriesLeft</div>
+                            </div>
+                        </ContentTemplate>
+                    </AccumulationChartAnnotation>
+                </AccumulationChartAnnotations>
+            </SfAccumulationChart>
+        </div>
         <div style="padding-left: 20px">
             <table class="table Calorie-table">
                 <tr>
@@ -284,7 +286,7 @@
         setFooterData();
     }
 
-    void PointClick(IPointEventArgs args)
+    void PointClick(PointEventArgs args)
     {
         currentDay = args.PointIndex;
         switch (args.PointIndex)

@@ -51,7 +51,7 @@
             </ChartArea>
             <ChartTooltipSettings Enable="true" Format="Click to View Details"></ChartTooltipSettings>
             <ChartAnnotations>
-                <ChartAnnotation X="Tuesday" Y="9800" CoordinateUnits="Units.Point">
+                <ChartAnnotation X="@StepData[2].Day" Y="9800" CoordinateUnits="Units.Point">
                     <ContentTemplate>
                         <div id="thumbs_up"><img src="images/Shape.png" style="width: 30px; height: 30px;" alt="Shape" /></div>
                     </ContentTemplate>
@@ -237,7 +237,7 @@
         HourText = "7";
     }
 
-    void PointClick(IPointEventArgs args)
+    void PointClick(PointEventArgs args)
     {
         switch (args.PointIndex)
         {
