@@ -67,7 +67,7 @@
             </ChartArea>
             <ChartTooltipSettings Enable="true" EnableMarker="false" Format="${point.y}"></ChartTooltipSettings>
             <ChartAnnotations>
-                <ChartAnnotation X="Thursday" Y="8" CoordinateUnits="Units.Point">
+                <ChartAnnotation X="@WaterData[4].Day" Y="8" CoordinateUnits="Units.Point">
                     <ContentTemplate>
                         <div><img src="images/Achieved_water.png" style="width: 30px; height: 30px;" alt="Achieved_water" /></div>
                     </ContentTemplate>
@@ -170,7 +170,7 @@
 
 
     string WaterDay = "Sunday Activity";
-    double PolarPointIndex = 5;
+    int PolarPointIndex = 5;
     protected override void OnInitialized()
     {
         this.WaterData = new List<Data>
@@ -189,12 +189,12 @@
         this.PolarData = HealthDataSunday.Water();
     }
 
-    void PolarPointClick(IPointEventArgs args)
+    void PolarPointClick(PointEventArgs args)
     {
-        this.PolarPointIndex = args.PointIndex;
+        this.PolarPointIndex = (int)args.PointIndex;
     }
 
-    void FindPolarData(IPointEventArgs args)
+    void FindPolarData(PointEventArgs args)
     {
         switch (args.PointIndex)
         {

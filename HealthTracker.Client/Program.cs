@@ -17,7 +17,7 @@ namespace HealthTracker
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
-            builder.Services.AddSyncfusionBlazor(true);
+            builder.Services.AddSyncfusionBlazor();
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddSingleton<SundayService>();
             builder.Services.AddSingleton<MondayService>();
