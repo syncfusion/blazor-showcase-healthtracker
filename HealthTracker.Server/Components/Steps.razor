@@ -6,6 +6,8 @@
 @inject FridayService HealthDataFriday
 @inject SaturdayService HealthDataSaturday
 @inject TuesdayService HealthDataTuesday
+
+
 <div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
     <div class="row">
         <div class="col-6">
@@ -60,6 +62,7 @@
                 <ChartSeries DataSource="@StepData" XName="Day" YName="Value" ColumnWidth="0.3" Fill="url(#gradient-chart)" Type="ChartSeriesType.Column">
                     <ChartCornerRadius TopLeft="10" TopRight="10"></ChartCornerRadius>
                     <ChartMarker Visible="false"></ChartMarker>
+                    <ChartSeriesAnimation Enable="false"></ChartSeriesAnimation>
                 </ChartSeries>
             </ChartSeriesCollection>
         </SfChart>

@@ -165,7 +165,7 @@
 @code {
     SfChart PolarChart;
     List<Data> WaterData;
-    
+
     public ObservableCollection<ChartData> PolarData { get; set; }
 
 
@@ -185,7 +185,7 @@
 
         };
 
-        
+
         this.PolarData = HealthDataSunday.Water();
     }
 
@@ -227,7 +227,8 @@
                 WaterDay = "Saturday Activity";
                 break;
         }
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
+        StateHasChanged();
     }
 
     void Click50Div()
@@ -237,7 +238,7 @@
         Click200(false);
         Click300(false);
         this.PolarData[(int)PolarPointIndex].Y += 0.05;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
 
 
@@ -248,7 +249,7 @@
         Click200(false);
         Click300(false);
         this.PolarData[(int)PolarPointIndex].Y += 0.1;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
     void Click200Div()
     {
@@ -257,7 +258,7 @@
         Click200(true);
         Click300(false);
         this.PolarData[(int)PolarPointIndex].Y += 0.2;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
     void Click300Div()
     {
@@ -266,7 +267,7 @@
         Click200(false);
         Click300(true);
         this.PolarData[(int)PolarPointIndex].Y += 0.3;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
 
     string Water50Main = "water-cup water-cup-50-click";
