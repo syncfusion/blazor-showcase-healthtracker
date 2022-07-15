@@ -86,11 +86,11 @@
         <div>
             <SfAccumulationChart Height="200px">
                 <AccumulationChartSeriesCollection>
-                    <AccumulationChartSeries DataSource="@Pie" StartAngle="220" EndAngle="140" XName="X" YName="Y" Radius="90%" InnerRadius="80%" Palettes="Color"></AccumulationChartSeries>
+                    <AccumulationChartSeries DataSource="@Pie" StartAngle="220" EndAngle="140" XName="X" YName="Y" Radius="100%" InnerRadius="80%" Palettes="Color"></AccumulationChartSeries>
                 </AccumulationChartSeriesCollection>
                 <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
                 <AccumulationChartAnnotations>
-                    <AccumulationChartAnnotation Region="Regions.Series" X="52%" Y="52%" CoordinateUnits="Units.Pixel">
+                    <AccumulationChartAnnotation Region="Regions.Series" X="52%" Y="57%" CoordinateUnits="Units.Pixel">
                         <ContentTemplate>
                             <div class="center-annotation">
                                 <div class="Calorie-pie-total">@CaloriesConsumed</div>
@@ -103,7 +103,7 @@
                 </AccumulationChartAnnotations>
             </SfAccumulationChart>
         </div>
-        <div style="padding-left: 20px">
+       <div style="padding-left: 20px">
             <table class="table Calorie-table">
                 <tr>
                     <td>
@@ -330,6 +330,7 @@
         }
 
         setFooterData();
+        StateHasChanged();
 
     }
 

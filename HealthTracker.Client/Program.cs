@@ -9,6 +9,7 @@ using HealthTracker.Shared;
 using HealthTracker.Client;
 using System.Net.Http;
 
+
 namespace HealthTracker
 {
     public class Program
@@ -16,9 +17,9 @@ namespace HealthTracker
         public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("app");
+            builder.RootComponents.Add<App>("#app");
             builder.Services.AddSyncfusionBlazor();
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddSingleton<SundayService>();
             builder.Services.AddSingleton<MondayService>();
             builder.Services.AddSingleton<TuesdayService>();
