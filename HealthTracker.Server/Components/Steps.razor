@@ -62,7 +62,6 @@
                 <ChartSeries DataSource="@StepData" XName="Day" YName="Value" ColumnWidth="0.3" Fill="url(#gradient-chart)" Type="ChartSeriesType.Column">
                     <ChartCornerRadius TopLeft="10" TopRight="10"></ChartCornerRadius>
                     <ChartMarker Visible="false"></ChartMarker>
-                    <ChartSeriesAnimation Enable="false"></ChartSeriesAnimation>
                 </ChartSeries>
             </ChartSeriesCollection>
         </SfChart>
@@ -305,10 +304,11 @@
                 break;
         }
         dynamic item = args.Point;
-        StepText = item.yValue;
-        int value = item.yValue / 2 + Int32.Parse(ExerText) * 10 + Int32.Parse(HourText) * 5;
+        StepText = Convert.ToString(item.YValue);
+        double value = item.YValue / 2 + Int32.Parse(ExerText) * 10 + Int32.Parse(HourText) * 5;
         centerContent = value.ToString();
-       // ExerPie.Refresh();
+        StateHasChanged();
+        // ExerPie.Refresh();
         //HourPie.Refresh();
         //StepPie.Refresh();
     }
