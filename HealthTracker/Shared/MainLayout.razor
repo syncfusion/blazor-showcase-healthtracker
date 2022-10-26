@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Notifications;
 
 <div class="container main-container">
     <SfAppBar>
@@ -17,7 +18,32 @@
     </div>
 
     <div class="row" style="margin-left: 20px; margin-right: 45px">
-        @Body
+        @if (isDataLoaded)
+        {
+            @Body
+        }
+        else
+        {
+            <div class="first-chart-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="396px" Width="108%"></SfSkeleton></div>
+            <div class="second-chart-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="396px" Width="108%"></SfSkeleton></div>
+        }
     </div>
-
 </div>
+
+@code {
+    private bool isDataLoaded;
+    private async void LoadData()
+    {
+        await Task.Delay(500);
+        isDataLoaded = true;
+        StateHasChanged();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
+    }
+}
