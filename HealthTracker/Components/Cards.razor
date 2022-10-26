@@ -1,4 +1,7 @@
 ﻿@inject NavigationManager NavigationManager
+@using Syncfusion.Blazor.Notifications;
+@if (isDataLoaded)
+{
 <div class="container card-container">
     <div class="row">
         <NavLink href="calories" Match="NavLinkMatch.All" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
@@ -52,8 +55,44 @@
         </NavLink>
     </div>
 </div>
+}
+else
+{
+    <div class="card-container-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="100px" Width="100%"></SfSkeleton></div>
+    <div class="card-container-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="100px" Width="100%"></SfSkeleton></div>
+    <div class="card-container-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="100px" Width="100%"></SfSkeleton></div>
+    <div class="card-container-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="100px" Width="100%"></SfSkeleton></div>
+}
 
-@code {    
+<style>
+    .card-container-skeleton{
+        width: 22%;
+        margin: 10px 0px 10px 27px;
+        height: 20%;
+        display: inline-block;
+    }
+    @@media (max-width: 908px) {
+        .card-container-skeleton {
+            width: 21%;
+        }
+    }
+    @@media (max-width: 767px) {
+        .card-container-skeleton {
+            width: 44%;
+            margin-right: 5px;
+        }
+    }
+    @@media (max-width: 575px) {
+        .card-container-skeleton {
+            width:94%;
+            margin-right: 19px;
+        }
+    }
+</style>
+
+@code {
+        private bool isDataLoaded;
+        private string URL;
         string CalorieMainClass = "e-card Calorie-fonts-click";
         string CalorieImage = "card-Calorie-image-click";
 
@@ -68,17 +107,36 @@
 
     protected override void OnInitialized()
     {
-        string URL = NavigationManager.Uri;
-        if(URL.Contains("water"))
+        URL = NavigationManager.Uri;
+    }
+
+    private async void LoadData()
+    {
+        if (URL.Contains("water"))
         {
             waterClick();
-        } else if (URL.Contains("steps")) {
+        }
+        else if (URL.Contains("steps"))
+        {
             stepClick();
-        } else if(URL.Contains("sleep"))
+        }
+        else if (URL.Contains("sleep"))
         {
             sleepClick();
         }
+        await Task.Delay(500);
+        isDataLoaded = true;
+        StateHasChanged();
     }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
+    }
+
     public void stepClick()
     {
         CalorieClassChanges(false);

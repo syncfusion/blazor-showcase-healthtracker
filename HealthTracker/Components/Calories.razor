@@ -9,7 +9,9 @@
 @inject FridayService HealthDataFriday
 @inject SaturdayService HealthDataSaturday
 @inject TuesdayService HealthDataTuesday
-
+@using Syncfusion.Blazor.Notifications;
+@if (isDataLoaded)
+{
 <div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
     <div class="row">
         <div class="col-6">
@@ -250,7 +252,12 @@
         </div>
     </div>
 </div>
-
+}
+else
+{
+    <div class="first-chart-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="396px" Width="108%"></SfSkeleton></div>
+    <div class="second-chart-skeleton"><SfSkeleton Shape="Syncfusion.Blazor.Notifications.SkeletonType.Rectangle" Height="396px" Width="108%"></SfSkeleton></div>
+}
 
 @code {
     public List<ChartData> Pie;
@@ -266,15 +273,18 @@
     string VitaminsData;
     string CaloriesConsumed = "1200";
     string CaloriesLeft = "1600 Cal left";
-
+    private bool isDataLoaded;
 
 
     protected override void OnInitialized()
     {
-
         this.Pie = HealthDataSunday.Sunday().Calories;
+    }
+
+    private async void LoadData()
+    {
         this.CalorieData = new List<Data>
-{
+        {
             new Data { Day = "Sunday", Value = 1200 },
             new Data { Day = "Monday", Value = 1800 },
             new Data { Day = "Tuesday", Value = 2850 },
@@ -286,6 +296,17 @@
         this.Color = new string[] { "#FFE547", "#FFAE2B", "#FF7536", "#FF6111", "#CD171C", "#760104" };
         this.CalorieDay = "Sunday Activity";
         setFooterData();
+        await Task.Delay(500);
+        isDataLoaded = true;
+        StateHasChanged();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
     }
 
     void PointClick(PointEventArgs args)
