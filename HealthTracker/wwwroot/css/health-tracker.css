@@ -28,73 +28,18 @@ html {
     height: 20%;
 }
 
-.main-title {
+.e-appbar.e-control.e-lib.e-light {
     margin-right: 0px !important;
     margin-left: 0px !important;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 7px 0 rgba(0,0,0,0.16);
-    height: 60px;
-    background-color: white;
+    margin-bottom: 20px !important;
+    box-shadow: 0 2px 7px 0 rgba(0,0,0,0.16) !important;
+    height: 60px !important;
+    background-color: white !important;
+    font-family: "Roboto" !important;
 }
 
-.health-title {
-    margin-top: -32px;
-    padding-left: 8%;
-    font-family: 'Roboto';
-    font-weight: 600;
-    font-size: 18px;
-    color: #1A1A1A;
-}
-
-@media screen and (min-width: 200px) and (max-width: 300px) {
-    .health-title {
-        padding-left: 32%;
-        font-size: 15px;
-    }
-}
-
-@media screen and (min-width: 300px) and (max-width: 350px) {
-    .health-title {
-        padding-left: 30%;
-        font-size: 15px;
-    }
-}
-
-@media screen and (min-width: 350px) and (max-width: 500px) {
-    .health-title {
-        padding-left: 24%;
-    }
-}
-
-
-@media screen and (min-width: 500px) and (max-width: 600px) {
-    .health-title {
-        padding-left: 21%;
-    }
-}
-
-@media screen and (min-width: 600px) and (max-width: 700px) {
-    .health-title {
-        padding-left: 18%;
-    }
-}
-
-@media screen and (min-width: 700px) and (max-width: 800px) {
-    .health-title {
-        padding-left: 15%;
-    }
-}
-
-@media screen and (min-width: 800px) and (max-width: 930px) {
-    .health-title {
-        padding-left: 13%;
-    }
-}
-
-@media screen and (min-width: 930px) and (max-width: 1100px) {
-    .health-title {
-        padding-left: 11%;
-    }
+.e-appbar .logo {
+    margin-left: 0.8%;
 }
 
 .second-chart-box {

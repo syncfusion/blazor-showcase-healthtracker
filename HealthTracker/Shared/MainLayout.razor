@@ -1,15 +1,16 @@
 ﻿@inherits LayoutComponentBase
+@using Syncfusion.Blazor.Navigations
+
 <div class="container main-container">
-    <div class="row main-title">
-        <div class="col" style="padding-left: 1.5%; margin-top: 10px;">
-            <img src="css/images/Healthstat.png" alt="Healthstat" />
-            <h1 class="health-title">Health Tracker</h1>
+    <SfAppBar>
+        <img class="logo" src="css/images/Healthstat.png" alt="Healthstat" />
+        <div class="title" style="margin: 0.4% 0.5%; font-weight: 600; font-size: 18px; color: #1A1A1A;">
+            Health Tracker
         </div>
-        <div class="col" style="text-align: right; padding-right: 1.5%; margin-top: 10px; ">
-            <b>Hi, John Smith</b>
-            <img src="css/images/Profile_.png" alt="Profile" />
-        </div>
-    </div>
+        <AppBarSpacer></AppBarSpacer>
+        <div style="font-weight: 700; font-size: 1.01rem; margin: 4px;">Hi, John Smith</div>
+        <img style="padding-right: 0.8%" src="css/images/Profile_.png" alt="Profile" />
+    </SfAppBar>
 
     <div class="row" style="margin-right: 1%">
         <Cards></Cards>
