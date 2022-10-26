@@ -1,0 +1,570 @@
+﻿@page "/calories";
+@using Syncfusion.Blazor.Charts
+
+ 
+@inject SundayService HealthDataSunday
+@inject MondayService HealthDataMonday
+@inject WednesdayService HealthDataWednesday
+@inject ThursdayService HealthDataThursday
+@inject FridayService HealthDataFriday
+@inject SaturdayService HealthDataSaturday
+@inject TuesdayService HealthDataTuesday
+
+<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
+    <div class="row">
+        <div class="col-6">
+            <div class="main-chart-title">Calories Consumed </div>
+        </div>
+
+        <div class="col-3">
+            <table class="table table-borderless" align="right">
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title" style="color: black">Today</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title2" style="color: rgba(26, 26, 26, 1);">1437 kcal</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-3">
+            <table class="table table-borderless" align="right">
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title" style="color: black">Daily Average</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="main-chart-sub-title2" style="color:  rgba(219, 66, 71, 1);">902 kcal</div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <div class="main-chart">
+        <SfChart Background="#FAFAFA">
+            <ChartEvents OnPointClick="PointClick"></ChartEvents>
+            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelPlacement="LabelPlacement.OnTicks" EdgeLabelPlacement="EdgeLabelPlacement.Shift">
+                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+            </ChartPrimaryXAxis>
+            <ChartPrimaryYAxis LabelFormat="{value} cal" RangePadding="ChartRangePadding.None" Minimum="0" Maximum="3500" Interval="500">
+                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                <ChartStriplines>
+                    <ChartStripline Start="2800" SizeType="SizeType.Pixel" DashArray="3,3" Size="1" Color="#D93237" Text="Daily Average 2800 cal" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
+                        <ChartStriplineTextStyle Color="#D93237" Size="14px" FontWeight="500" FontFamily="Roboto"></ChartStriplineTextStyle>
+                    </ChartStripline>
+                    <ChartStripline Start="2000" SizeType="SizeType.Pixel" DashArray="3,3" Size="1" Color="#760104" Text="Today 2000 cal" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
+                        <ChartStriplineTextStyle Color="#760104" Size="14px" FontWeight="500" FontFamily="Roboto"></ChartStriplineTextStyle>
+                    </ChartStripline>
+                </ChartStriplines>
+            </ChartPrimaryYAxis>
+            <ChartArea>
+                <ChartAreaBorder Width="0"></ChartAreaBorder>
+            </ChartArea>
+            <ChartTooltipSettings Enable="true" Header="${point.x}" Format="${point.y}<br>Click to View More Details"></ChartTooltipSettings>
+            <ChartSeriesCollection>
+                <ChartSeries DataSource="@CalorieData" XName="Day" YName="Value" Fill="#F38D36">
+                    <ChartMarker Visible="true" Fill="#FCE38A" Height="10" Width="10">
+                        <ChartMarkerBorder Color="#F38181"></ChartMarkerBorder>
+                    </ChartMarker>
+                </ChartSeries>
+            </ChartSeriesCollection>
+        </SfChart>
+    </div>
+</div>
+
+<div class="row col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 second-chart-box" style="height: 530px;">
+
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-9">
+
+        <div class="pieHeader">@CalorieDay</div>
+        <div>
+            <SfAccumulationChart Height="270px">
+                <AccumulationChartSeriesCollection>
+                    <AccumulationChartSeries DataSource="@Pie" StartAngle="220" EndAngle="140" XName="X" YName="Y" Radius="90%" InnerRadius="80%" Palettes="Color"></AccumulationChartSeries>
+                </AccumulationChartSeriesCollection>
+                <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
+                <AccumulationChartAnnotations>
+                    <AccumulationChartAnnotation Region="Regions.Series" X="52%" Y="52%" CoordinateUnits="Units.Pixel">
+                        <ContentTemplate>
+                            <div class="center-annotation">
+                                <div class="Calorie-pie-total">@CaloriesConsumed</div>
+                                <div class="Calorie-pie-text">Cal consumed</div>
+                                <hr style="margin-top: 15px; margin-bottom: 0px">
+                                <div class="Calorie-pie-left">@CaloriesLeft</div>
+                            </div>
+                        </ContentTemplate>
+                    </AccumulationChartAnnotation>
+                </AccumulationChartAnnotations>
+            </SfAccumulationChart>
+        </div>
+        <div style="padding-left: 0px">
+            <table class="table Calorie-table">
+                <tr>
+                    <td>
+                        <table class="table">
+                            <tr>
+                                <td rowspan="2">
+                                    <img src="css/images/fat.png" class="images-height" alt="fat" />
+                                </td>
+                                <td class="Calorie-footer">
+                                    @FatData
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="Calorie-footer-data">
+                                    Fat
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table">
+                            <tr>
+                                <td rowspan="2">
+                                    <img src="css/images/fibre.png"  class="images-height" alt="fibre"/>
+                                </td>
+                                <td class="Calorie-footer">
+                                    @FibreData
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="Calorie-footer-data">
+                                    Fiber
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="table">
+                            <tr>
+                                <td rowspan="2">
+                                    <img src="css/images/Carb.png"  class="images-height" alt="Carb"/>
+                                </td>
+                                <td class="Calorie-footer">
+                                    @CarbsData
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="Calorie-footer-data">
+                                    Carbs
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td>
+                        <table class="table">
+                            <tr>
+                                <td rowspan="2">
+                                    <img src="css/images/Calcium.png"  class="images-height" alt="Calcium"/>
+                                </td>
+                                <td class="Calorie-footer">
+                                    @CalciumData
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="Calorie-footer-data">
+                                    Calcium
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="table">
+                            <tr>
+                                <td rowspan="2">
+                                    <img src="css/images/Protein.png"  class="images-height" alt="Protein"/>
+                                </td>
+                                <td class="Calorie-footer">
+                                    @ProteinsData
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="Calorie-footer-data">
+                                    Proteins
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                    <td>
+                        <table class="table">
+                            <tr>
+                                <td rowspan="2">
+                                    <img src="css/images/vitamins.png"  class="images-height" alt="vitamins"/>
+                                </td>
+                                <td class="Calorie-footer">
+                                    @VitaminsData
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="Calorie-footer-data">
+                                    Vitamin
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-3" style="padding-left: 0px">
+        <div class="Calorie-food" @onclick="BreakFastChange">
+            <div class="@breakfastMainClass">
+                <div class="@breakfastImage"></div>
+                <div class="@breakfastFont">Breakfast</div>
+            </div>
+        </div>
+        <div class="Calorie-food" @onclick="LunchChange">
+            <div class="@lunchMainClass">
+                <div class="@lunchImage"></div>
+                <div class="@lunchFont">Lunch</div>
+            </div>
+        </div>
+        <div class="Calorie-food" @onclick="DinnerChange">
+            <div class="@dinnerMainClass">
+                <div class="@dinnerImage"></div>
+                <div class="@dinnerFont">Dinner</div>
+            </div>
+        </div>
+        <div class="Calorie-food" @onclick="SnackChange">
+            <div class="@snackMainClass">
+                <div class="@snackImage"></div>
+                <div class="@snackFont">Snack</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    public List<ChartData> Pie;
+    public List<Data> CalorieData;
+    public String[] Color;
+    public double currentDay = 0;
+    string CalorieDay;
+    string FatData;
+    string FibreData;
+    string CarbsData;
+    string CalciumData;
+    string ProteinsData;
+    string VitaminsData;
+    string CaloriesConsumed = "1200";
+    string CaloriesLeft = "1600 Cal left";
+
+
+
+    protected override void OnInitialized()
+    {
+
+        this.Pie = HealthDataSunday.Sunday().Calories;
+        this.CalorieData = new List<Data>
+{
+            new Data { Day = "Sunday", Value = 1200 },
+            new Data { Day = "Monday", Value = 1800 },
+            new Data { Day = "Tuesday", Value = 2850 },
+            new Data { Day = "Wednesday", Value = 1900 },
+            new Data { Day = "Thursday", Value = 2500 },
+            new Data { Day = "Friday", Value = 1650 },
+            new Data { Day = "Saturday", Value = 1300 }
+        };
+        this.Color = new string[] { "#FFE547", "#FFAE2B", "#FF7536", "#FF6111", "#CD171C", "#760104" };
+        this.CalorieDay = "Sunday Activity";
+        setFooterData();
+    }
+
+    void PointClick(PointEventArgs args)
+    {
+        currentDay = args.PointIndex;
+        switch (args.PointIndex)
+        {
+            case 0:
+                this.Pie = HealthDataSunday.Sunday().Calories;
+                this.CalorieDay = "Sunday Activity";
+                break;
+            case 1:
+                this.Pie = HealthDataMonday.Monday().Calories;
+                this.CalorieDay = "Monday Activity";
+                break;
+            case 2:
+                this.Pie = HealthDataTuesday.Tuesday().Calories;
+                this.CalorieDay = "Tuesday Activity";
+                break;
+            case 3:
+                this.Pie = HealthDataWednesday.WednesDay().Calories;
+                this.CalorieDay = "Wednesday Activity";
+                break;
+            case 4:
+                this.Pie = HealthDataThursday.Thursday().Calories;
+                this.CalorieDay = "Thursday Activity";
+                break;
+            case 5:
+                this.Pie = HealthDataFriday.Friday().Calories;
+                this.CalorieDay = "Friday Activity";
+                break;
+            case 6:
+                this.Pie = HealthDataSaturday.Saturday().Calories;
+                this.CalorieDay = "Saturday Activity";
+                break;
+        }
+        CaloriesConsumed = (CalorieData[(int)args.PointIndex].Value).ToString();
+        if (CalorieData[(int)args.PointIndex].Value < 2800)
+        {
+            CaloriesLeft = (2800 - CalorieData[(int)args.PointIndex].Value).ToString() + " Cal left";
+        } else
+        {
+            CaloriesLeft = (CalorieData[(int)args.PointIndex].Value - 2800).ToString() + " Cal above avg";
+        }
+
+        setFooterData();
+
+       // StateHasChanged();
+    }
+
+    void BreakFastChange()
+    {
+        switch (this.currentDay)
+        {
+            case 0:
+                this.Pie = HealthDataSunday.Breakfast();
+                break;
+            case 1:
+                this.Pie = HealthDataMonday.Breakfast();
+                break;
+            case 2:
+                this.Pie = HealthDataTuesday.Breakfast();
+                break;
+            case 3:
+                this.Pie = HealthDataWednesday.Breakfast();
+                break;
+            case 4:
+                this.Pie = HealthDataThursday.Breakfast();
+                break;
+            case 5:
+                this.Pie = HealthDataFriday.Breakfast();
+                break;
+            case 6:
+                this.Pie = HealthDataSaturday.Breakfast();
+                break;
+        }
+        setFooterData();
+
+        breakFastClick(true);
+        lunchClick(false);
+        dinnerClick(false);
+        snackClick(false);
+
+        //StateHasChanged();
+    }
+
+    void LunchChange()
+    {
+        switch (this.currentDay)
+        {
+            case 0:
+                this.Pie = HealthDataSunday.Lunch();
+                break;
+            case 1:
+                this.Pie = HealthDataMonday.Lunch();
+                break;
+            case 2:
+                this.Pie = HealthDataTuesday.Lunch();
+                break;
+            case 3:
+                this.Pie = HealthDataWednesday.Lunch();
+                break;
+            case 4:
+                this.Pie = HealthDataThursday.Lunch();
+                break;
+            case 5:
+                this.Pie = HealthDataFriday.Lunch();
+                break;
+            case 6:
+                this.Pie = HealthDataSaturday.Lunch();
+                break;
+        }
+        setFooterData();
+
+        breakFastClick(false);
+        lunchClick(true);
+        dinnerClick(false);
+        snackClick(false);
+               
+    }
+
+    void SnackChange()
+    {
+        switch (this.currentDay)
+        {
+            case 0:
+                this.Pie = HealthDataSunday.Snack();
+                break;
+            case 1:
+                this.Pie = HealthDataMonday.Snack();
+                break;
+            case 2:
+                this.Pie = HealthDataTuesday.Snack();
+                break;
+            case 3:
+                this.Pie = HealthDataWednesday.Snack();
+                break;
+            case 4:
+                this.Pie = HealthDataThursday.Snack();
+                break;
+            case 5:
+                this.Pie = HealthDataFriday.Snack();
+                break;
+            case 6:
+                this.Pie = HealthDataSaturday.Snack();
+                break;
+        }
+        setFooterData();
+
+        breakFastClick(false);
+        lunchClick(false);
+        dinnerClick(false);
+        snackClick(true);
+
+    }
+
+    void DinnerChange()
+    {
+        switch (this.currentDay)
+        {
+            case 0:
+                this.Pie = HealthDataSunday.Dinner();
+                break;
+            case 1:
+                this.Pie = HealthDataMonday.Dinner();
+                break;
+            case 2:
+                this.Pie = HealthDataTuesday.Dinner();
+                break;
+            case 3:
+                this.Pie = HealthDataWednesday.Dinner();
+                break;
+            case 4:
+                this.Pie = HealthDataThursday.Dinner();
+                break;
+            case 5:
+                this.Pie = HealthDataFriday.Dinner();
+                break;
+            case 6:
+                this.Pie = HealthDataSaturday.Dinner();
+                break;
+        }
+        setFooterData();
+
+
+        breakFastClick(false);
+        lunchClick(false);
+        dinnerClick(true);
+        snackClick(false);
+
+    }
+
+
+    void setFooterData()
+    {
+        ProteinsData = this.Pie[0].Y.ToString() + "/100g";
+        FatData = this.Pie[1].Y.ToString() + "/100g";
+        FibreData = this.Pie[2].Y.ToString() + "/100g";
+        CalciumData = this.Pie[3].Y.ToString() + "/100g";
+        VitaminsData = this.Pie[4].Y.ToString() + "/100g";
+        CarbsData = this.Pie[5].Y.ToString() + "/100g";
+    }
+
+
+    //css styles
+    string breakfastMainClass = "Calorie-breakfast-click";
+    string breakfastImage = "Calorie-image Calorie-breakfast-image-click";
+    string breakfastFont = "Calorie-font-breakfast-click";
+
+    string lunchMainClass = "Calorie-lunch";
+    string lunchImage = "Calorie-image Calorie-lunch-image";
+    string lunchFont = "Calorie-font-lunch";
+
+    string dinnerMainClass = "Calorie-dinner";
+    string dinnerImage = "Calorie-image Calorie-dinner-image";
+    string dinnerFont = "Calorie-font-dinner";
+
+    string snackMainClass = "Calorie-snack";
+    string snackImage = "Calorie-image Calorie-snack-image";
+    string snackFont = "Calorie-font-snack";
+
+    void breakFastClick(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            breakfastMainClass = "Calorie-breakfast-click";
+            breakfastImage = "Calorie-image Calorie-breakfast-image-click";
+            breakfastFont = "Calorie-font-breakfast-click";
+        }
+        else
+        {
+            breakfastMainClass = "Calorie-breakfast";
+            breakfastImage = "Calorie-image Calorie-breakfast-image";
+            breakfastFont = "Calorie-font-breakfast";
+        }
+    }
+    void dinnerClick(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            dinnerMainClass = "Calorie-dinner-click";
+            dinnerImage = "Calorie-image Calorie-dinner-image-click";
+            dinnerFont = "Calorie-font-dinner-click";
+        }
+        else
+        {
+            dinnerMainClass = "Calorie-dinner";
+            dinnerImage = "Calorie-image Calorie-dinner-image";
+            dinnerFont = "Calorie-font-dinner";
+        }
+    }
+    void lunchClick(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            lunchMainClass = "Calorie-lunch-click";
+            lunchImage = "Calorie-image Calorie-lunch-image-click";
+            lunchFont = "Calorie-font-lunch-click";
+        }
+        else
+        {
+            lunchMainClass = "Calorie-lunch";
+            lunchImage = "Calorie-image Calorie-lunch-image";
+            lunchFont = "Calorie-font-lunch";
+        }
+    }
+    void snackClick(bool NeedHighLight)
+    {
+        if (NeedHighLight)
+        {
+            snackMainClass = "Calorie-snack-click";
+            snackImage = "Calorie-image Calorie-snack-image-click";
+            snackFont = "Calorie-font-snack-click";
+        }
+        else
+        {
+            snackMainClass = "Calorie-snack";
+            snackImage = "Calorie-image Calorie-snack-image";
+            snackFont = "Calorie-font-snack";
+        }
+    }
+}

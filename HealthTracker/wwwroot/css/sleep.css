@@ -1,0 +1,32 @@
+/** Sleep css*/
+
+
+.sleep-table-bold-text {
+   
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 24px;
+    color: #392178;
+    letter-spacing: -0.08px;
+    text-align: center;
+}
+
+.sleep-table-text {
+    margin-top: 10px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 14px;
+    color: #4A4A4A;
+    letter-spacing: -0.08px;
+    line-height: 0px;
+    text-align: center;
+}
+
+.annotation-text {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    color: #485465;
+    letter-spacing: -0.08px;
+    text-align: center;
+}
