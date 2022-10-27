@@ -1,21 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>efc7890f-8400-46cb-a619-46c9a5feeba1</UserSecretsId>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.9" />
+    <PackageReference Include="Syncfusion.Blazor" Version="20.3.0.50" />
+    <PackageReference Include="Syncfusion.Licensing" Version="20.3.0.50" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.Licensing" Version="20.2.0.36" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\HotFix\Hotfix 20.2-recent\ej2-blazor-source\Syncfusion.Blazor\Syncfusion.Blazor.csproj" />
     <ProjectReference Include="..\HealthTracker.Shared\HealthTracker.Shared.csproj" />
   </ItemGroup>
+
 
 </Project>
