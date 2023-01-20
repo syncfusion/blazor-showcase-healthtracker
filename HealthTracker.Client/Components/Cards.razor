@@ -1,171 +1,143 @@
 ﻿@inject NavigationManager NavigationManager
-<div class="container card-container">
+<div class="card-container">
     <div class="row">
-        <NavLink href="calories" Match="NavLinkMatch.All" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
-            <div class="col" @onclick="CalorieClick">
-                <div tabindex="0" class="@CalorieMainClass">
+        <NavLink href="calories" Match="NavLinkMatch.All" class="col-xs-6 col-xl-3 col-lg-3 col-md-6 col-sm-6 navStyle">
+            @if (isDataLoaded)
+            {
+                <div id="calories" class="e-card @isCalorieSelected" @onclick="CalorieClick">
                     <h3 style="font-size: 32px; font-weight: 400">13,100</h3>
                     <div>
                         <span style="font-size: initial">Calories Eaten</span>
-                        <span class="@CalorieImage">
-                        </span>
+                        <span id="food-img" class="icon-Food activity-icon"></span>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <SfSkeleton Width="100%" Height="100px" Effect="ShimmerEffect.Wave"> </SfSkeleton>
+            }
         </NavLink>
-        <NavLink href="steps" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
-            <div class="col" @onclick="stepClick">
-                <div tabindex="0" class="@stepMainClass">
+        <NavLink href="steps" class="col-xs-6 col-xl-3 col-lg-3 col-md-6 col-sm-6 navStyle">
+            @if (isDataLoaded)
+            {
+                <div id="steps" class="e-card @isStepSelected" @onclick="stepClick">
                     <h3 style="font-size: 32px; font-weight: 400">52,100</h3>
                     <div>
                         <span style="font-size: initial">Steps Taken</span>
-                        <span class="@stepImage">
-                        </span>
+                        <span id="steps-img" class="icon-Steps activity-icon"></span>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <SfSkeleton Width="100%" Height="100px" Effect="ShimmerEffect.Wave"> </SfSkeleton>
+            }
         </NavLink>
 
-        <NavLink href="water" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
-            <div class="col" @onclick="waterClick">
-                <div tabindex="0" class="@waterMainClass">
+        <NavLink href="water" class="col-xs-6 col-xl-3 col-lg-3 col-md-6 col-sm-6 navStyle">
+            @if (isDataLoaded)
+            {
+                <div id="water" class="e-card @isWaterSelected" @onclick="waterClick">
                     <h3 style="font-size: 32px; font-weight: 400">38.7 ltr</h3>
                     <div>
                         <span style="font-size: initial">Water Consumed</span>
-                        <span class="@waterImage">
-                        </span>
+                        <span id="water-img" class="icon-Water activity-icon"></span>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+            <SfSkeleton Width="100%" Height="100px" Effect="ShimmerEffect.Wave"> </SfSkeleton>
+            }
         </NavLink>
-        <NavLink href="sleep" class="col-xs-6 col-xl-3 col-lg-3 col-md-3 col-sm-6 navStyle">
-            <div class="col" @onclick="sleepClick">
-                <div tabindex="0" class="@sleepMainClass">
+        <NavLink href="sleep" class="col-xs-6 col-xl-3 col-lg-3 col-md-6 col-sm-6 navStyle">
+            @if (isDataLoaded)
+            {
+                <div id="sleep" class="e-card @isSleepSelected" @onclick="sleepClick">
                     <h3 style="font-size: 32px; font-weight: 400">50 hr</h3>
                     <div>
                         <span style="font-size: initial">Sleep Duration</span>
-                        <span class="@sleepImage">
-                        </span>
+                        <span id="sleep-img" class="icon-Sleep activity-icon"></span>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <SfSkeleton Width="100%" Height="100px" Effect="ShimmerEffect.Wave"> </SfSkeleton>
+            }
         </NavLink>
     </div>
 </div>
 
-@code {    
-        string CalorieMainClass = "e-card Calorie-fonts-click";
-        string CalorieImage = "card-Calorie-image-click";
-
-        string stepMainClass = "e-card step-fonts";
-        string stepImage = "card-step-image";
-
-        string waterMainClass = "e-card water-fonts";
-        string waterImage = "card-water-image";
-
-        string sleepMainClass = "e-card sleep-fonts";
-        string sleepImage = "card-sleep-image";
+@code {
+    private bool isDataLoaded;
+    private string? URL;
+    string isCalorieSelected = "selected";
+    string isStepSelected = "";
+    string isWaterSelected = "";
+    string isSleepSelected = "";
 
     protected override void OnInitialized()
     {
-        string URL = NavigationManager.Uri;
-        if(URL.Contains("water"))
+        URL = NavigationManager.Uri;
+    }
+
+    private async void LoadData()
+    {
+        if (URL.Contains("water"))
         {
             waterClick();
-        } else if (URL.Contains("steps")) {
+        }
+        else if (URL.Contains("steps"))
+        {
             stepClick();
-        } else if(URL.Contains("sleep"))
+        }
+        else if (URL.Contains("sleep"))
         {
             sleepClick();
         }
+        await Task.Delay(2000);
+        isDataLoaded = true;
+        StateHasChanged();
     }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
+    }
+
     public void stepClick()
     {
-        CalorieClassChanges(false);
-        stepClassChanges(true);
-        waterClassChanges(false);
-        sleepClassChanges(false);
+        isCalorieSelected = "";
+        isStepSelected = "selected";
+        isWaterSelected = "";
+        isSleepSelected = "";
     }
 
     public void CalorieClick()
     {
-        CalorieClassChanges(true);
-        stepClassChanges(false);
-        waterClassChanges(false);
-        sleepClassChanges(false);
+        isCalorieSelected = "selected";
+        isStepSelected = "";
+        isWaterSelected = "";
+        isSleepSelected = "";
     }
 
     public void waterClick()
     {
-        CalorieClassChanges(false);
-        stepClassChanges(false);
-        waterClassChanges(true);
-        sleepClassChanges(false);
+        isCalorieSelected = "";
+        isStepSelected = "";
+        isWaterSelected = "selected";
+        isSleepSelected = "";
     }
 
     public void sleepClick()
     {
-        CalorieClassChanges(false);
-        stepClassChanges(false);
-        waterClassChanges(false);
-        sleepClassChanges(true);
-
-    }
-
-
-    void stepClassChanges(bool NeedHighLight)
-    {
-        if (NeedHighLight)
-        {
-            stepMainClass = "e-card step-fonts-click";
-            stepImage = "card-step-image-click";
-        }
-        else
-        {
-            stepMainClass = "e-card step-fonts";
-            stepImage = "card-step-image";
-        }
-    }
-
-    void waterClassChanges(bool NeedHighLight)
-    {
-        if (NeedHighLight)
-        {
-            waterMainClass = "e-card water-fonts-click";
-            waterImage = "card-water-image-click";
-        }
-        else
-        {
-            waterMainClass = "e-card water-fonts";
-            waterImage = "card-water-image";
-        }
-    }
-
-    void CalorieClassChanges(bool NeedHighLight)
-    {
-        if (NeedHighLight)
-        {
-            CalorieMainClass = "e-card Calorie-fonts-click";
-            CalorieImage = "card-Calorie-image-click";
-        }
-        else
-        {
-            CalorieMainClass = "e-card Calorie-fonts";
-            CalorieImage = "card-Calorie-image";
-        }
-    }
-
-    void sleepClassChanges(bool NeedHighLight)
-    {
-        if (NeedHighLight)
-        {
-            sleepMainClass = "e-card sleep-fonts-click";
-            sleepImage = "card-sleep-image-click";
-        }
-        else
-        {
-            sleepMainClass = "e-card sleep-fonts";
-            sleepImage = "card-sleep-image";
-        }
+        isCalorieSelected = "";
+        isStepSelected = "";
+        isWaterSelected = "";
+        isSleepSelected = "selected";
     }
 }

@@ -1,7 +1,5 @@
 ﻿@page "/calories";
-@using Syncfusion.Blazor.Charts
 
- 
 @inject SundayService HealthDataSunday
 @inject MondayService HealthDataMonday
 @inject WednesdayService HealthDataWednesday
@@ -10,9 +8,11 @@
 @inject SaturdayService HealthDataSaturday
 @inject TuesdayService HealthDataTuesday
 
-<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
-    <div class="row">
-        <div class="col-6">
+<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8" style="height:530px;">
+    @if (isDataLoaded)
+    {
+        <div class="row">
+            <div class="col-6">
             <div class="main-chart-title">Calories Consumed </div>
         </div>
 
@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="main-chart-sub-title2" style="color: rgba(26, 26, 26, 1);">1437 kcal</div>
+                        <div class="main-chart-sub-title2" style="color: rgba(26, 26, 26, 1);">@todayValue Kcal</div>
                     </td>
                 </tr>
             </table>
@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="main-chart-sub-title2" style="color:  rgba(219, 66, 71, 1);">902 kcal</div>
+                        <div class="main-chart-sub-title2" style="color:  rgba(219, 66, 71, 1);">@dailyAverageValue kcal</div>
                     </td>
                 </tr>
             </table>
@@ -57,10 +57,10 @@
                 <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
                 <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                 <ChartStriplines>
-                    <ChartStripline Start="2800" SizeType="SizeType.Pixel" DashArray="3,3" Size="1" Color="#D93237" Text="Daily Average 2800 cal" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
+                    <ChartStripline Start="@dailyAverageValue" SizeType="SizeType.Pixel" DashArray="3,3" Size="1" Color="#D93237" Text="Daily Average 2800 cal" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
                         <ChartStriplineTextStyle Color="#D93237" Size="14px" FontWeight="500" FontFamily="Roboto"></ChartStriplineTextStyle>
                     </ChartStripline>
-                    <ChartStripline Start="2000" SizeType="SizeType.Pixel" DashArray="3,3" Size="1" Color="#760104" Text="Today 2000 cal" HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
+                    <ChartStripline Start=@todayValue SizeType="SizeType.Pixel" DashArray="3,3" Size="1" Color="#760104" Text=@todayText HorizontalAlignment="Anchor.End" VerticalAlignment="Anchor.End">
                         <ChartStriplineTextStyle Color="#760104" Size="14px" FontWeight="500" FontFamily="Roboto"></ChartStriplineTextStyle>
                     </ChartStripline>
                 </ChartStriplines>
@@ -77,18 +77,24 @@
                 </ChartSeries>
             </ChartSeriesCollection>
         </SfChart>
-    </div>
+        </div>
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
 
 <div class="row col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 second-chart-box" style="height: 530px;">
+    @if (isDataLoaded)
+    {
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-9">
 
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 col-9">
-
-        <div class="pieHeader">@CalorieDay</div>
+        <div class="pieHeader">Macro Nutrients</div>
         <div>
             <SfAccumulationChart Height="270px">
                 <AccumulationChartSeriesCollection>
-                    <AccumulationChartSeries DataSource="@Pie" StartAngle="220" EndAngle="140" XName="X" YName="Y" Radius="90%" InnerRadius="80%" Palettes="Color"></AccumulationChartSeries>
+                    <AccumulationChartSeries DataSource="@Pie" StartAngle="220" EndAngle="140" XName="X" YName="Y" Radius="100%" InnerRadius="80%" Palettes="Color"></AccumulationChartSeries>
                 </AccumulationChartSeriesCollection>
                 <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
                 <AccumulationChartAnnotations>
@@ -105,7 +111,7 @@
                 </AccumulationChartAnnotations>
             </SfAccumulationChart>
         </div>
-        <div style="padding-left: 0px">
+        <div style="padding-left: 20px">
             <table class="table Calorie-table">
                 <tr>
                     <td>
@@ -248,16 +254,20 @@
                 <div class="@snackFont">Snack</div>
             </div>
         </div>
-    </div>
+        </div>
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
 
 
 @code {
-    public List<ChartData> Pie;
-    public List<Data> CalorieData;
-    public String[] Color;
+    public List<ChartData>? Pie;
+    public List<Data>? CalorieData;
+    public String[]? Color;
     public double currentDay = 0;
-    string CalorieDay;
     string FatData;
     string FibreData;
     string CarbsData;
@@ -266,15 +276,24 @@
     string VitaminsData;
     string CaloriesConsumed = "1200";
     string CaloriesLeft = "1600 Cal left";
+    string dailyAverageValue;
+    string todayValue;
+    string dailyAverageText;
+    string todayText;
+    private bool isDataLoaded;
 
-
-
-    protected override void OnInitialized()
+    private async void LoadData()
     {
-
+        await GetChartData();
+        isDataLoaded = true;
+        StateHasChanged();
+    }
+    private async Task GetChartData()
+    {
+        await Task.Delay(2000);
         this.Pie = HealthDataSunday.Sunday().Calories;
         this.CalorieData = new List<Data>
-{
+        {
             new Data { Day = "Sunday", Value = 1200 },
             new Data { Day = "Monday", Value = 1800 },
             new Data { Day = "Tuesday", Value = 2850 },
@@ -283,9 +302,20 @@
             new Data { Day = "Friday", Value = 1650 },
             new Data { Day = "Saturday", Value = 1300 }
         };
+        dailyAverageValue = "2800";
+        todayValue = "2000";
+        dailyAverageText = "Daily Average " + dailyAverageValue + " cal";
+        todayText = "Today " + todayValue + " cal";
         this.Color = new string[] { "#FFE547", "#FFAE2B", "#FF7536", "#FF6111", "#CD171C", "#760104" };
-        this.CalorieDay = "Sunday Activity";
         setFooterData();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
     }
 
     void PointClick(PointEventArgs args)
@@ -295,45 +325,38 @@
         {
             case 0:
                 this.Pie = HealthDataSunday.Sunday().Calories;
-                this.CalorieDay = "Sunday Activity";
                 break;
             case 1:
                 this.Pie = HealthDataMonday.Monday().Calories;
-                this.CalorieDay = "Monday Activity";
                 break;
             case 2:
                 this.Pie = HealthDataTuesday.Tuesday().Calories;
-                this.CalorieDay = "Tuesday Activity";
                 break;
             case 3:
                 this.Pie = HealthDataWednesday.WednesDay().Calories;
-                this.CalorieDay = "Wednesday Activity";
                 break;
             case 4:
                 this.Pie = HealthDataThursday.Thursday().Calories;
-                this.CalorieDay = "Thursday Activity";
                 break;
             case 5:
                 this.Pie = HealthDataFriday.Friday().Calories;
-                this.CalorieDay = "Friday Activity";
                 break;
             case 6:
                 this.Pie = HealthDataSaturday.Saturday().Calories;
-                this.CalorieDay = "Saturday Activity";
                 break;
         }
         CaloriesConsumed = (CalorieData[(int)args.PointIndex].Value).ToString();
         if (CalorieData[(int)args.PointIndex].Value < 2800)
         {
             CaloriesLeft = (2800 - CalorieData[(int)args.PointIndex].Value).ToString() + " Cal left";
-        } else
+        }
+        else
         {
             CaloriesLeft = (CalorieData[(int)args.PointIndex].Value - 2800).ToString() + " Cal above avg";
         }
 
         setFooterData();
-
-       // StateHasChanged();
+        StateHasChanged();
     }
 
     void BreakFastChange()
@@ -369,7 +392,6 @@
         dinnerClick(false);
         snackClick(false);
 
-        //StateHasChanged();
     }
 
     void LunchChange()
