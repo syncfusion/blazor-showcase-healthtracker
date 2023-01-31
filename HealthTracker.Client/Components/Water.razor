@@ -1,5 +1,5 @@
 ﻿@page "/water";
-@using Syncfusion.Blazor.Charts; 
+
 @using System.Collections.ObjectModel;
 @inject SundayService HealthDataSunday
 @inject MondayService HealthDataMonday
@@ -8,9 +8,11 @@
 @inject FridayService HealthDataFriday
 @inject SaturdayService HealthDataSaturday
 @inject TuesdayService HealthDataTuesday
-<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
-    <div class="row">
-        <div class="col-6">
+<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8" style="height: 530px;">
+    @if (isDataLoaded)
+    {
+        <div class="row">
+            <div class="col-6">
             <div class="main-chart-title">  Water Consumption </div>
         </div>
         <div class="col-3">
@@ -81,10 +83,17 @@
             </ChartSeriesCollection>
         </SfChart>
     </div>
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
-<div class="col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 row second-chart-box">
-    <div>
-        <div class="pieHeader">@WaterDay</div>
+<div class="col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 second-chart-box" style="height: auto;">
+    @if (isDataLoaded)
+    {
+        <div>
+            <div class="pieHeader">@WaterDay</div>
     </div>
     <div style="height: 320px; width: 100%;">
         <SfChart Height="320px" @ref="PolarChart" SelectionMode="SelectionMode.Point">
@@ -105,26 +114,26 @@
     </div>
     <div style="width: 100%">
         <div style="text-align: center;font-weight: 500;font-size: 16px;color: #1A1A1A;"><b>Add Water intake value</b></div>
-        <div class="row" style="margin-left: 10px; margin-right: 10px">
-            <div class="col-3 col-sm-3 col-md-3 col-lg-3 cup-padding" @onclick="Click50Div">
+        <div class="row" style="margin:10px">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-6 cup-padding" @onclick="Click50Div">
                 <div class="@Water50Main">
                     <div class="@Water50Image"></div>
                     <div class="@Water50Text">50 ml</div>
                 </div>
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3 col-3 cup-padding" @onclick="Click100Div">
+            <div class="col-sm-3 col-md-3 col-lg-6 col-3 cup-padding" @onclick="Click100Div">
                 <div class="@Water100Main">
                     <div class="@Water100Image"></div>
                     <div class="@Water100Text">100 ml</div>
                 </div>
             </div>
-            <div class="col-3 col-sm-3 col-md-3 col-lg-3 cup-padding" @onclick="Click200Div">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-6 cup-padding" @onclick="Click200Div">
                 <div class="@Water200Main">
                     <div class="@Water200Image"></div>
                     <div class="@Water200Text">200 ml</div>
                 </div>
             </div>
-            <div class="col-3 col-sm-3 col-md-3 col-lg-3 cup-padding" @onclick="Click300Div">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-6 cup-padding" @onclick="Click300Div">
                 <div class="@Water300Main">
                     <div class="@Water300Image"></div>
                     <div class="@Water300Text">300 ml</div>
@@ -132,9 +141,11 @@
             </div>
         </div>
     </div>
-
-
-
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
 <style>
     #fabric-gradient-chart stop {
@@ -162,16 +173,24 @@
     </defs>
 </svg>
 @code {
-    SfChart PolarChart;
-    List<Data> WaterData;
-    
-    public ObservableCollection<ChartData> PolarData { get; set; }
+    SfChart? PolarChart;
+    List<Data> ?WaterData;
+
+    public ObservableCollection<ChartData>? PolarData { get; set; }
 
 
     string WaterDay = "Sunday Activity";
     int PolarPointIndex = 5;
-    protected override void OnInitialized()
+    private bool isDataLoaded;
+    private async void LoadData()
     {
+        await GetChartData();
+        isDataLoaded = true;
+        StateHasChanged();
+    }
+    private async Task GetChartData()
+    {
+        await Task.Delay(2000);
         this.WaterData = new List<Data>
         {
             new Data { Day = "Sunday" , Value = 5},
@@ -181,9 +200,15 @@
             new Data { Day = "Thursday" , Value = 7.5},
             new Data { Day = "Friday" , Value = 4.2},
             new Data { Day = "Saturday" , Value = 6 },
-
         };
         this.PolarData = HealthDataSunday.Water();
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
     }
 
     void PolarPointClick(PointEventArgs args)
@@ -224,7 +249,8 @@
                 WaterDay = "Saturday Activity";
                 break;
         }
-       
+        PolarChart.RefreshAsync();
+        StateHasChanged();
     }
 
     void Click50Div()
@@ -234,7 +260,7 @@
         Click200(false);
         Click300(false);
         this.PolarData[(int)PolarPointIndex].Y += 0.05;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
 
 
@@ -245,7 +271,7 @@
         Click200(false);
         Click300(false);
         this.PolarData[(int)PolarPointIndex].Y += 0.1;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
     void Click200Div()
     {
@@ -254,7 +280,7 @@
         Click200(true);
         Click300(false);
         this.PolarData[(int)PolarPointIndex].Y += 0.2;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
     void Click300Div()
     {
@@ -263,7 +289,7 @@
         Click200(false);
         Click300(true);
         this.PolarData[(int)PolarPointIndex].Y += 0.3;
-        PolarChart.Refresh();
+        PolarChart.RefreshAsync();
     }
 
     string Water50Main = "water-cup water-cup-50-click";

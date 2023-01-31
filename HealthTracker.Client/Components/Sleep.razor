@@ -6,9 +6,11 @@
 @inject FridayService HealthDataFriday
 @inject SaturdayService HealthDataSaturday
 @inject TuesdayService HealthDataTuesday
-<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
-    <div class="row">
-        <div class="col-6">
+<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8" style="height:530px;">
+    @if (isDataLoaded)
+    {
+        <div class="row">
+            <div class="col-6">
             <div class="main-chart-title">Sleep Tracker</div>
         </div>
         <div class="col-3">
@@ -62,9 +64,15 @@
             </ChartSeriesCollection>
         </SfChart>
     </div>
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
-<div class="col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 second-chart-box row">
-
+<div class="col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 second-chart-box row" style="height: 530px;">
+    @if (isDataLoaded)
+    {
     <div class="pieHeader" style="min-height: 10%">Sleep Quantity</div>
     <div style="width: 100%">
         <SfAccumulationChart Height="270px">
@@ -119,12 +127,16 @@
             </tr>
         </table>
     </div>
-
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
 
 @code {
-    List<Data> SleepData;
-    List<ChartData> SleepDayData;
+    List<Data>? SleepData;
+    List<ChartData>? SleepDayData;
     string[] Colors = new string[] { "#6137E3", "#392178", "#9572FF", "#4F2BAF", "#392178", "#9572FF", "#6137E3", "#4F2BAF", "#392178" };
 
     string DeepData = "5h 24 mins";
@@ -134,8 +146,16 @@
     string Start = "9:30 pm";
     string End = "6:30 am";
     string Total = "9";
-    protected override void OnInitialized()
+    private bool isDataLoaded;
+    private async void LoadData()
     {
+        await GetChartData();
+        isDataLoaded = true;
+        StateHasChanged();
+    }
+    private async Task GetChartData()
+    {
+        await Task.Delay(2000);
         this.SleepData = new List<Data>
 {
             new Data { Day = "Sunday" , Value = 9, Size = 4.837 },
@@ -147,8 +167,13 @@
             new Data { Day = "Saturday" , Value = 9, Size = 4.837 },
         };
         SleepDayData = HealthDataSunday.Sleep();
-
-
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
     }
 
     void FindSleepDayData(PointEventArgs args)
@@ -226,7 +251,7 @@
                 RemData = "27 mins";
                 break;
         }
-       
+        StateHasChanged();
     }
 
 }

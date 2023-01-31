@@ -1,221 +1,95 @@
 a {
     text-decoration: none !important;
 }
-
-h3 {
+.card-container h3 {
     margin-bottom: 0px !important;
     padding-top: 2%;
 }
-
-.card-header {
-    font-size: 32px;
-}
-
-.card-text {
-    font-size: 18px
-}
-
 .card-container {   
-    min-width: 100%;   
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 40px;
 }
-
+.e-card{
+    padding-left: 5%;
+    border-radius: 4px;
+}
 .navStyle {
-    min-width: 25% !important;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    padding: 0px 0px 20px 20px;
 }
-
-.Calorie-fonts {
-    padding-left: 5%;    
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: rgb(130, 130, 130) !important;
-    border-radius: 4px !important;
-   
-}
-
-    .Calorie-fonts:hover {
-        color: #F16A30 !important;
-    }
-.card-Calorie-image{
-    float:right;
-    display:grid;
-    height: 65px;
-    width: 65px;
-    
-    margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/food.png);
-}
-
-.Calorie-fonts-click {
-    padding-left: 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: white !important;
-    border-radius: 4px !important;
-    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%) !important;
-}
-
-.card-Calorie-image-click {
+.activity-icon {
     float: right;
-    display: grid;
-    height: 65px;
-    width: 65px;
+    color: #999393;
+    font-size: 65px;
     margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/food_white.png);
+    margin-bottom: 2%
+}
+.icon-steps:before {
+    content: "\e90e";
+}
+.icon-Water:before {
+    content: "\e901";
+}
+.icon-Food:before {
+    content: "\e907";
+}
+.icon-Sleep:before {
+    content: "\e909";
+}
+.icon-Steps:before {
+    content: "\e90b";
+}
+#calories.e-card:hover {
+    box-shadow: 0 1px 4px 1px rgba(241,106,48,0.20);
 }
 
-.Calorie-fonts:hover .card-Calorie-image {
-    background-image: url(images/Food_Hover.png);
+#steps.e-card:hover {
+    box-shadow: 0 1px 4px 1px rgba(76, 219, 83, 0.3);
 }
 
-/* Step fonts*/
-.step-fonts {
-    padding-left: 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: rgb(130, 130, 130) !important;
-    border-radius: 4px !important;
+#water.e-card:hover {
+    box-shadow: 0 1px 4px 1px rgba(24,103,218,0.30);
 }
 
-.step-fonts-click {
-    padding-left: 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: white !important;
-    border-radius: 4px !important;
-    background-image: linear-gradient(45deg, #04AB11 0%, #7DD61D 100%) !important;
+#sleep.e-card:hover {
+    box-shadow: 0 1px 4px 1px rgba(102,56,185,0.30);
 }
 
-    .step-fonts:hover {
-        color: #078411 !important;
-    }
-
-.card-step-image {
-    float: right;
-    display: grid;
-    height: 65px;
-    width: 65px;
-    margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/steps.png);
+#calories.e-card:hover, .e-card:hover #food-img {
+    color: #F16A30;
 }
 
-.card-step-image-click {
-    float: right;
-    display: grid;
-    height: 65px;
-    width: 65px;
-    margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/steps_white.png);
+#steps.e-card:hover, .e-card:hover #steps-img {
+    color: #078411;
 }
 
-.step-fonts:hover .card-step-image {
-    background-image: url(images/steps_hover.png);
+#water.e-card:hover, .e-card:hover #water-img {
+    color: #1867DA;
 }
 
-/* water font*/
-/* water fonts*/
-.water-fonts {
-    padding-left: 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: rgb(130, 130, 130) !important;
-    border-radius: 4px !important;
+#sleep.e-card:hover, .e-card:hover #sleep-img {
+    color: #6638B9;
 }
-
-    .water-fonts:hover {
-        color: #1867DA !important;
-    }
-
-.card-water-image {
-    float: right;
-    display: grid;
-    height: 65px;
-    width: 65px;
-    margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/water.png);
+#calories.e-card.selected, .e-card.selected:hover{
+    background-image: linear-gradient(45deg, #F23B3B 0%, #EF9027 100%);
+    box-shadow: 0 3px 6px 2px rgba(178,30,195,0.30);
+    color: #FFFFFF;
 }
-
-.water-fonts:hover .card-water-image {
-    background-image: url(images/water_hover.png);
+#steps.e-card.selected, .e-card.selected:hover {
+    background-image: linear-gradient(45deg, #04AB11 0%, #7DD61D 100%);
+    box-shadow: 0 3px 6px 3px rgba(66,254,19,0.20);
+    color: #FFFFFF;
 }
-
-.water-fonts-click {
-    padding-left: 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: white !important;
-    border-radius: 4px !important;
-    background-image: linear-gradient(44deg, #2140DC 0%, #00BFD5 100%) !important;
+#water.e-card.selected, .e-card.selected:hover {
+    background-image: linear-gradient(44deg, #2140DC 0%, #00BFD5 100%);
+    box-shadow: 0 3px 6px 3px rgba(49,131,185,0.25);
+    color: #FFFFFF;
 }
-
-.card-water-image-click {
-    float: right;
-    display: grid;
-    height: 65px;
-    width: 65px;
-    margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/water_white.png);
+#sleep.e-card.selected, .e-card.selected:hover {
+    background-image: linear-gradient(-135deg, #2925A6 0%, #B250D1 100%);
+    box-shadow: 0 3px 6px 3px rgba(71,63,204,0.20);
+    color: #FFFFFF;
 }
-
-/* Sleep styles*/
-.sleep-fonts {
-    padding-left: 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: rgb(130, 130, 130) !important;
-    border-radius: 4px !important;
+.e-card.selected #food-img, .e-card.selected #steps-img, .e-card.selected #water-img, .e-card.selected #sleep-img {
+    color: #FFFFFF;
 }
-
-    .sleep-fonts:hover {
-        color: #6638B9 !important;
-    }
-
-.card-sleep-image {
-    float: right;
-    display: grid;
-    height: 65px;
-    width: 65px;
-    margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/sleep.png);
-}
-
-.sleep-fonts:hover .card-sleep-image {
-    background-image: url(images/sleep_hover.png);
-}
-
-
-.sleep-fonts-click {
-    padding-left: 5%;
-    font-family: 'Roboto';
-    font-weight: 400;
-    letter-spacing: 0;
-    color: white !important;
-    border-radius: 4px !important;
-    background-image: linear-gradient(-135deg, #2925A6 0%, #B250D1 100%) !important;
-}
-
-.card-sleep-image-click {
-    float: right;
-    display: grid;
-    height: 65px;
-    width: 65px;
-    margin-right: 3%;
-    margin-bottom: 2%;
-    background-image: url(images/sleep_white.png);
-}
-

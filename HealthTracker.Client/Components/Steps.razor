@@ -7,7 +7,11 @@
 @inject FridayService HealthDataFriday
 @inject SaturdayService HealthDataSaturday
 @inject TuesdayService HealthDataTuesday
-<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8">
+
+
+<div class="col-sm-12 col-md-12 col-12 col-lg-8 col-xl-8" style="height:530px;">
+    @if (isDataLoaded)
+    {
     <div class="row">
         <div class="col-6">
             <div class="main-chart-title">Steps Taken</div>
@@ -65,9 +69,15 @@
             </ChartSeriesCollection>
         </SfChart>
     </div>
-
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
-<div class="col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 second-chart-box">
+<div class="col-sm-12 col-md-12 col-12 col-lg-4 col-xl-4 second-chart-box" style="height: 530px;">
+    @if (isDataLoaded)
+    {
     <div class="pieHeader">@DayText</div>
     <div style="text-align: center">
         <SfAccumulationChart Background="transparent" @ref="@StepPie" Height="330px" Width="320px" ID="PieChart">
@@ -170,6 +180,11 @@
 
         </div>
     </div>
+    }
+    else
+    {
+        <SfSkeleton Width="100%" Height="100%" Effect="ShimmerEffect.Wave"></SfSkeleton>
+    }
 </div>
 <style>
     #gradient-chart stop {
@@ -199,9 +214,9 @@
     </defs>
 </svg>
 @code {
-    SfAccumulationChart ExerPie;
-    SfAccumulationChart HourPie;
-    SfAccumulationChart StepPie;
+    SfAccumulationChart? ExerPie;
+    SfAccumulationChart? HourPie;
+    SfAccumulationChart? StepPie;
     string centerContent = "4285";
     string DayText;
     string StepText;
@@ -214,10 +229,17 @@
     string[] StepPalette = new string[] { "#4F7305", "LightGrey" };
     string[] ExerPalette = new string[] { "#4F7305", "LightGrey" };
     string[] HourPalette = new string[] { "#A1A621", "LightGrey" };
+    private bool isDataLoaded;
 
-
-    protected override void OnInitialized()
+    private async void LoadData()
     {
+        await GetChartData();
+        isDataLoaded = true;
+        StateHasChanged();
+    }
+    private async Task GetChartData()
+    {
+        await Task.Delay(2000);
         this.StepData = new List<Data>
 {
             new Data { Day = "Sunday", Value = 8200 },
@@ -235,6 +257,13 @@
         StepText = "8200";
         ExerText = "15";
         HourText = "7";
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            LoadData();
+        }
     }
 
     void PointClick(PointEventArgs args)
@@ -301,9 +330,9 @@
                 break;
         }
         dynamic item = args.Point;
-        StepText = item.yValue;
-        int value = item.yValue / 2 + Int32.Parse(ExerText) * 10 + Int32.Parse(HourText) * 5;
+        StepText = Convert.ToString(item.YValue);
+        double value = item.YValue / 2 + Int32.Parse(ExerText) * 10 + Int32.Parse(HourText) * 5;
         centerContent = value.ToString();
-      
+        StateHasChanged();
     }
 }
