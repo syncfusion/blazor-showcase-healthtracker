@@ -1,0 +1,85 @@
+html {
+    height: 100%;
+    font-family: "Roboto";
+}
+.row {
+    margin: 0px;
+}
+.col {
+    padding: unset;
+}
+.main-container {
+    padding-bottom: 20px;
+    margin: 5px 5px 0px 5px;
+    background: #FAFAFA;
+}
+.e-appbar.custom-appbar {
+    height: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: 'Roboto';
+}
+.e-avatar.custom-avatar {
+    background-color: transparent;
+    font-size: 14px;
+    margin: 0px 13px;
+}
+.chart-area {
+    margin-left: 20px;
+    margin-right: 45px;
+}
+.second-chart-box {
+    box-shadow: 0 1px 4px 1px rgba(0,0,0,0.10);
+    background: #FFFFFF !important;
+    padding: 0px;
+    height: 530px;   
+}
+
+.main-chart {   
+    background: #FAFAFA;  
+    display: block;
+    width: 97%;
+}
+
+.main-chart-title {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 20px;
+    color: #535353;
+    letter-spacing: 0;
+    display: block;
+}
+
+.main-chart-sub-title {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12px;
+   
+}
+
+
+@media only screen and (min-width: 901px) {
+    .main-chart-sub-title2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-left: -1%;
+    }
+}
+
+/* If the screen size is 600px or less, set the font-size of <div> to 30px */
+@media only screen and (max-width: 900px) {
+    .chart-area {
+        margin: 0px 15px;
+    }
+    .main-chart-sub-title2 {
+        font-size: 14px;
+        font-weight: 700;
+        margin-left: -1%;
+    }
+    .appbar-subtitle {
+        display:none;
+    }
+    .second-chart-box {
+        margin-top: 40px;
+    }
+}

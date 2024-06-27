@@ -8,8 +8,9 @@ Track and visualize the calories consumed and daily activities like steps taken,
 
 The samples requires the below requirements to run.
 
-* [Visual Studio 2019 Preview](https://visualstudio.microsoft.com/vs/preview/)
-* [.NET Core SDK 3.1.100](https://dotnet.microsoft.com/download/dotnet-core/3.1/)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
+* [.NET 7.0](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+* [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ### Run
 
