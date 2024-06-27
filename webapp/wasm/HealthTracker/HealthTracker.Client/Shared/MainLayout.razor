@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Notifications;
+
+<div class="main-container">
+    <SfAppBar CssClass="custom-appbar">
+        <span class="e-avatar e-avatar-circle custom-avatar"> <img class="logo" src="css/images/Healthstat.png" alt="Healthstat" /> </span>
+        <div class="title" style="margin: 0.3% 0.5% 0; font-weight: 600; font-size: 18px; color: #1A1A1A;">
+            Health Tracker
+        </div>
+        <AppBarSpacer></AppBarSpacer>
+        <div class="appbar-subtitle" style="font-weight: 700; font-size: 1.01rem; margin: 4px;">Hi, John Smith</div>
+        <span class="e-avatar e-avatar-circle custom-avatar"> <img style="padding-right: 0.8%" src="css/images/Profile_.png" alt="Profile" /> </span>
+    </SfAppBar>
+     
+    <div class="row">
+        <Cards></Cards>
+    </div>
+
+    <div class="row chart-area">
+        @Body
+    </div>
+
+</div>
