@@ -19,6 +19,6 @@ The samples requires the below requirements to run.
 
 ## Demo
 
-### <a href="https://blazor.syncfusion.com/showcase/wasm/healthtracker/" target="_blank">https://blazor.syncfusion.com/showcase/wasm/healthtracker/</a>
+### <a href="https://blazor.syncfusion.com/showcase/wasm/health-tracker/" target="_blank">https://blazor.syncfusion.com/showcase/wasm/health-tracker/</a>
 
 Check all the showcase samples from <a href="https://blazor.syncfusion.com/demos/" target="_blank">here</a>.
