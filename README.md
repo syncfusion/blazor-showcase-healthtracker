@@ -13,12 +13,12 @@ The samples requires the below requirements to run.
 
 ### Run
 
-* Clone this repository.
-* Open the command prompt from Application root directory.
-* Run the demo using `dotnet run` command.
+1. Clone this repository.
+2. Open the `.sln` file in VS 2022.
+3. Click the green run button in the toolbar.
 
 ## Demo
 
-### <a href="https://blazor.syncfusion.com/showcase/healthtracker/" target="_blank">https://blazor.syncfusion.com/showcase/healthtracker/</a>
+### <a href="https://blazor.syncfusion.com/showcase/wasm/healthtracker/" target="_blank">https://blazor.syncfusion.com/showcase/wasm/healthtracker/</a>
 
-Check all the showcase samples from <a href="https://ej2.syncfusion.com/home/blazor.html" target="_blank">here</a>.
+Check all the showcase samples from <a href="https://blazor.syncfusion.com/demos/" target="_blank">here</a>.
