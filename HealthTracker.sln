@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracker", "HealthTracker\HealthTracker.csproj", "{F35A40AB-3790-4A6C-9FA3-5126500BB2FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthTracker.Client", "HealthTracker.Client\HealthTracker.Client.csproj", "{676A1BDB-97A1-45B0-8B52-CBA4AE5322EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F35A40AB-3790-4A6C-9FA3-5126500BB2FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35A40AB-3790-4A6C-9FA3-5126500BB2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35A40AB-3790-4A6C-9FA3-5126500BB2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35A40AB-3790-4A6C-9FA3-5126500BB2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{676A1BDB-97A1-45B0-8B52-CBA4AE5322EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{676A1BDB-97A1-45B0-8B52-CBA4AE5322EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{676A1BDB-97A1-45B0-8B52-CBA4AE5322EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{676A1BDB-97A1-45B0-8B52-CBA4AE5322EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BEEB6674-64B4-4B0A-A7FA-0F1C114318CA}
+	EndGlobalSection
+EndGlobal
