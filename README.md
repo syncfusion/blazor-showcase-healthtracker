@@ -13,9 +13,9 @@ The samples requires the below requirements to run.
 
 ### Run
 
-1. Clone this repository.
-2. Open the `.sln` file in VS 2022.
-3. Click the green run button in the toolbar.
+* Clone this repository.
+* Open the command prompt from Application root directory.
+* Run the demo using `dotnet run` command.
 
 ## Demo
 
