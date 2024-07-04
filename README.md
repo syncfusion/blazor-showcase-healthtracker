@@ -8,17 +8,17 @@ Track and visualize the calories consumed and daily activities like steps taken,
 
 The samples requires the below requirements to run.
 
-* [Visual Studio 2019 Preview](https://visualstudio.microsoft.com/vs/preview/)
-* [.NET Core SDK 3.1.100](https://dotnet.microsoft.com/download/dotnet-core/3.1/)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)
+* [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ### Run
 
 * Clone this repository.
 * Open the command prompt from Application root directory.
-* Run the demo using `dotnet run` command.
+* Run the demo using `dotnet run --project HealthTracker/HealthTracker.csproj` command.
 
 ## Demo
 
-### <a href="https://blazor.syncfusion.com/showcase/healthtracker/" target="_blank">https://blazor.syncfusion.com/showcase/healthtracker/</a>
+### <a href="https://blazor.syncfusion.com/showcase/wasm/health-tracker/" target="_blank">https://blazor.syncfusion.com/showcase/wasm/health-tracker/</a>
 
-Check all the showcase samples from <a href="https://ej2.syncfusion.com/home/blazor.html" target="_blank">here</a>.
+Check all the showcase samples from <a href="https://blazor.syncfusion.com/demos/" target="_blank">here</a>.
