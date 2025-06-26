@@ -1,3 +1,5 @@
+[![.NET](https://github.com/ArunKumar-SF3979/blazor-showcase-healthtracker/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ArunKumar-SF3979/blazor-showcase-healthtracker/actions/workflows/dotnet.yml)
+
 # Essential Studio for Blazor - Health Tracker
 
 Track and visualize the calories consumed and daily activities like steps taken, water consumption and sleeping time.
