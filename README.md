@@ -1,4 +1,4 @@
-[![.NET](https://github.com/ArunKumar-SF3979/blazor-showcase-healthtracker/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ArunKumar-SF3979/blazor-showcase-healthtracker/actions/workflows/dotnet.yml)
+[![.NET](https://github.com/syncfusion/blazor-showcase-healthtracker/actions/workflows/dotnet.yml/badge.svg)](https://github.com/syncfusion/blazor-showcase-healthtracker/actions/workflows/dotnet.yml)
 
 # Essential Studio for Blazor - Health Tracker
 
