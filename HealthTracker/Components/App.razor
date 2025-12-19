@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject NavigationManager Urihelper
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,6 +8,7 @@
     <meta name="description" content="Health tracker is a single page application to demonstrate the Syncfusion Blazor WebAssembly Data Visualization components in real-world scenario. It shows the rich interactivity functionality of Charts to create a dashboard kind of application." />
     <title>Health tracker | Blazor WebAssembly Showcase app | Syncfusion</title>
     <!-- Google Tag Manager -->
+    <!-- Load GTM-P3WXFWCW immediately on page load  -->
     <script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -15,12 +17,31 @@
             }); var f = d.getElementsByTagName(s)[0],
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-WLQL39J');
+        })(window, document, 'script', 'dataLayer', 'GTM-P3WXFWCW');
     </script>
-    <!-- End Google Tag Manager -->
+    <!-- Load GTM-W8WD8WN on user interaction -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const events = ["mousemove", "scroll", "keydown", "touchstart"];
+            function loadGTM() {
+                events.forEach(event => document.removeEventListener(event, loadGTM));
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-W8WD8WN');
+            }
+            events.forEach(event => document.addEventListener(event, loadGTM, { once: true }));
+        });
+    </script>
+		<!-- End Google Tag Manager -->
 
     <base href="/" />
-     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href=@Urihelper.Uri rel="canonical" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="_content/Syncfusion.Blazor/styles/material.css" rel="stylesheet" />
     <link href="manifest.json" rel="manifest" />
     <link href="css/icomoon.eot" rel="stylesheet" />
@@ -43,8 +64,15 @@
 </head>
 
 <body>
-     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src=https://www.googletagmanager.com/ns.html?id =GTM-WLQL39J height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <!--Page Load-->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3WXFWCW" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!--Interaction-->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8WD8WN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div hidden id="sync-analytics" data-queue="EJ2 - Showcase - Blazor - HealthTracker"></div>
     <app>
