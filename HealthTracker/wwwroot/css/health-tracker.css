@@ -12,6 +12,8 @@ html {
     padding-bottom: 20px;
     margin: 5px 5px 0px 5px;
     background: #FAFAFA;
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
 }
 .e-appbar.custom-appbar {
     height: auto;
